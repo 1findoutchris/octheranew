@@ -26,6 +26,10 @@
   --color-primary-border: rgba(255, 90, 31, 0.35);
   --color-primary-soft: rgba(255, 90, 31, 0.12);
   --color-primary-glow: rgba(255, 90, 31, 0.45);
+
+  /* Luxury casino-atmosphere accents (hero background only) */
+  --color-luxury-ember: rgba(120, 45, 12, 0.4);
+  --color-luxury-line: rgba(255, 166, 41, 0.5);
 }
 
 @theme inline {
@@ -51,6 +55,8 @@
   --animate-fade-in-up: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-marquee: marquee 32s linear infinite;
   --animate-dash: dash-flow 1.6s linear infinite;
+  --animate-spin-slow: spin-slow 140s linear infinite;
+  --animate-spin-slow-reverse: spin-slow-reverse 100s linear infinite;
 }
 
 * {
@@ -280,6 +286,24 @@ body {
   }
   50% {
     transform: translateY(-14px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-slow-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
 
