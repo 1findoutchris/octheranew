@@ -2,6 +2,7 @@ import Link from "next/link";
 import { footerNav, siteConfig } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { OctheraLogo } from "@/components/ui/OctheraLogo";
 
 export function Footer() {
   return (
@@ -10,9 +11,7 @@ export function Footer() {
       <Container className="py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
           <div className="max-w-sm">
-            <span className="text-xl font-bold tracking-tight">
-              OCT<span className="text-gradient-accent">HERA</span>
-            </span>
+            <OctheraLogo href="/" size="md" />
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Powering the Future of Gaming. Octhera provides B2B casino
               aggregation, sportsbook, turnkey and white-label infrastructure
