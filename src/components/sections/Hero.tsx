@@ -2,13 +2,12 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { HeroVisual } from "@/components/sections/HeroVisual";
+import { CasinoAtmosphere } from "@/components/sections/CasinoAtmosphere";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-36 pb-20 lg:pt-44 lg:pb-28">
-      <div className="absolute inset-0 bg-grid opacity-[0.3] [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,black,transparent)]" />
-      <div className="absolute inset-0 bg-radial-fade" />
-      <div className="animate-float absolute right-[8%] top-24 hidden size-72 rounded-full bg-primary/10 blur-3xl lg:block" />
+      <CasinoAtmosphere />
 
       <Container className="relative grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
         <Reveal>
