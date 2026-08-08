@@ -1,0 +1,357 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   OCTHERA BRAND TOKENS
+   Single source of truth for the color system. Update values here to
+   re-theme the entire site.
+   ========================================================================== */
+:root {
+  /* Brand accents */
+  --color-primary: #ff5a1f;
+  --color-primary-bright: #ff7a1a;
+  --color-amber: #ffa629;
+
+  /* Surfaces */
+  --color-bg: #070707;
+  --color-bg-secondary: #0d0d0d;
+  --color-bg-elevated: #131313;
+
+  /* Text */
+  --color-fg: #ffffff;
+  --color-fg-muted: #a3a3a3;
+
+  /* Borders / glows */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-primary-border: rgba(255, 90, 31, 0.35);
+  --color-primary-soft: rgba(255, 90, 31, 0.12);
+  --color-primary-glow: rgba(255, 90, 31, 0.45);
+}
+
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-surface: var(--color-bg-secondary);
+  --color-elevated: var(--color-bg-elevated);
+  --color-foreground: var(--color-fg);
+  --color-muted: var(--color-fg-muted);
+  --color-border: var(--color-border);
+  --color-primary: var(--color-primary);
+  --color-primary-bright: var(--color-primary-bright);
+  --color-amber: var(--color-amber);
+  --color-primary-soft: var(--color-primary-soft);
+  --color-primary-border: var(--color-primary-border);
+  --color-border-strong: var(--color-border-strong);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-gradient-shift: gradient-shift 8s ease infinite;
+  --animate-pulse-glow: pulse-glow 3.5s ease-in-out infinite;
+  --animate-fade-in-up: fade-in-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-dash: dash-flow 1.6s linear infinite;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-elevated);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ==========================================================================
+   Layered surfaces & brand utilities
+   ========================================================================== */
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-radial-fade {
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      var(--color-primary-soft),
+      transparent 70%
+    );
+  }
+
+  .card-surface {
+    background: linear-gradient(
+      180deg,
+      var(--color-bg-elevated) 0%,
+      var(--color-bg-secondary) 100%
+    );
+    border: 1px solid var(--color-border);
+  }
+
+  .card-glow {
+    position: relative;
+  }
+  .card-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-border),
+      transparent 40%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .card-glow:hover::before {
+    opacity: 1;
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      90deg,
+      var(--color-fg) 0%,
+      var(--color-fg) 40%,
+      var(--color-primary-bright) 75%,
+      var(--color-amber) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(
+      90deg,
+      var(--color-primary) 0%,
+      var(--color-primary-bright) 50%,
+      var(--color-amber) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .border-glow {
+    border: 1px solid var(--color-primary-border);
+    box-shadow: 0 0 0 1px var(--color-primary-soft) inset;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 60px -12px var(--color-primary-glow);
+  }
+
+  .btn-primary {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-bright) 100%
+    );
+    color: #fff;
+    box-shadow: 0 8px 24px -8px var(--color-primary-glow);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      filter 0.25s ease;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 10px 32px -8px var(--color-primary-glow);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-fg);
+    border: 1px solid var(--color-border-strong);
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease;
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-primary-border);
+    background: var(--color-primary-soft);
+  }
+
+  .dot-active {
+    background: var(--color-primary);
+    box-shadow: 0 0 12px 2px var(--color-primary-glow);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  .reveal.is-visible {
+    animation: var(--animate-fade-in-up);
+  }
+
+  .flow-line {
+    position: relative;
+    overflow: hidden;
+  }
+  .flow-line::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-primary-bright) 45%,
+      var(--color-amber) 55%,
+      transparent
+    );
+    animation: flow-dot 2.2s linear infinite;
+  }
+
+  .flow-line-vertical {
+    position: relative;
+    overflow: hidden;
+  }
+  .flow-line-vertical::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      var(--color-primary-bright) 45%,
+      var(--color-amber) 55%,
+      transparent
+    );
+    animation: flow-dot-vertical 1.8s linear infinite;
+  }
+}
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+@keyframes flow-dot {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes flow-dot-vertical {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+/* ==========================================================================
+   Motion preferences
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
