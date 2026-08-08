@@ -2,7 +2,11 @@ export type PricingPlan = {
   slug: string;
   name: string;
   bestFor: string;
-  priceLabel: string;
+  currency: "USD";
+  /** Struck-through reference price. */
+  originalPrice: number;
+  /** Current discounted price, shown prominently. */
+  currentPrice: number;
   priceNote: string;
   features: string[];
   cta: string;
@@ -10,17 +14,21 @@ export type PricingPlan = {
 };
 
 /**
- * Commercial terms are placeholders. Replace priceLabel / priceNote / features
- * with actual Octhera commercial terms when available — nothing here should
- * be treated as a live quote.
+ * Single source of truth for Octhera commercial pricing. Both the homepage
+ * pricing section and /pricing page render from this file — update prices
+ * here and they change everywhere.
  */
+export const pricingOfferBadge = "Launch Offer";
+
 export const pricingPlans: PricingPlan[] = [
   {
     slug: "game-aggregation-api",
     name: "Game Aggregation API",
     bestFor: "Operators with an existing platform",
-    priceLabel: "Custom",
-    priceNote: "Typically structured as a setup/integration fee plus a revenue-share arrangement.",
+    currency: "USD",
+    originalPrice: 1500,
+    currentPrice: 999,
+    priceNote: "Limited-time launch pricing for new operators.",
     features: [
       "Single API access to the aggregated catalog",
       "Provider and game catalog management",
@@ -33,8 +41,10 @@ export const pricingPlans: PricingPlan[] = [
     slug: "white-label",
     name: "White Label",
     bestFor: "Brands that want faster launch",
-    priceLabel: "Custom",
-    priceNote: "Commercial terms depend on scope, market and launch timeline.",
+    currency: "USD",
+    originalPrice: 4000,
+    currentPrice: 2499,
+    priceNote: "Limited-time launch pricing for new brands.",
     features: [
       "Ready-made platform and branding tools",
       "Game aggregation included",
@@ -48,8 +58,10 @@ export const pricingPlans: PricingPlan[] = [
     slug: "turnkey",
     name: "Turnkey",
     bestFor: "Full platform and infrastructure",
-    priceLabel: "Custom",
-    priceNote: "Commercial terms depend on scope, market and infrastructure requirements.",
+    currency: "USD",
+    originalPrice: 10000,
+    currentPrice: 7999,
+    priceNote: "Limited-time launch pricing on the full stack.",
     features: [
       "Complete casino and sportsbook stack",
       "Back office, payments and affiliate tools",
@@ -62,8 +74,10 @@ export const pricingPlans: PricingPlan[] = [
     slug: "enterprise",
     name: "Enterprise",
     bestFor: "Larger operators needing custom infrastructure",
-    priceLabel: "Contact Sales",
-    priceNote: "Scoped individually based on scale, infrastructure and support requirements.",
+    currency: "USD",
+    originalPrice: 35000,
+    currentPrice: 29999,
+    priceNote: "Limited-time launch pricing for large-scale deployments.",
     features: [
       "Custom infrastructure and architecture",
       "Dedicated account and technical support",
@@ -73,3 +87,8 @@ export const pricingPlans: PricingPlan[] = [
     cta: "Contact Sales",
   },
 ];
+
+export function formatPrice(amount: number, currency: PricingPlan["currency"] = "USD") {
+  const symbol = currency === "USD" ? "$" : "";
+  return `${symbol}${amount.toLocaleString("en-US")}`;
+}
