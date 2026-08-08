@@ -7,6 +7,7 @@ import { mainNav } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { OctheraLogo } from "@/components/ui/OctheraLogo";
 import { cn } from "@/lib/cn";
 
 export function Navbar() {
@@ -46,11 +47,7 @@ export function Navbar() {
       )}
     >
       <Container className="flex h-18 items-center justify-between">
-        <Link href="/" className="group flex items-center gap-2">
-          <span className="text-xl font-bold tracking-tight">
-            OCT<span className="text-gradient-accent">HERA</span>
-          </span>
-        </Link>
+        <OctheraLogo href="/" size="md" />
 
         <nav className="hidden items-center gap-1 lg:flex">
           {mainNav.map((item) => (
