@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { docCategories } from "@/data/docs";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -31,37 +30,7 @@ export default function DocsPage() {
         description="API references, guides and webhook events for game aggregation, sportsbook, wallet and back office — one platform, a single set of docs."
       />
 
-      <section className="pb-24 lg:pb-32">
-        <Container>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {docCategories.map((category, i) => (
-              <Reveal key={category.slug} delay={i * 50}>
-                <Link
-                  href={`#${category.slug}`}
-                  className="card-surface card-glow group flex h-full flex-col rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-7"
-                >
-                  <div className="flex size-12 items-center justify-center rounded-xl bg-primary-soft text-primary-bright">
-                    <Icon name={category.icon} className="size-6" />
-                  </div>
-                  <h3 className="mt-5 text-lg font-semibold text-foreground">{category.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
-                    {category.description}
-                  </p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors group-hover:text-primary-bright">
-                    View section
-                    <Icon
-                      name="arrow-right"
-                      className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-t border-border bg-surface py-24 lg:py-32">
+      <section className="py-24 lg:py-32">
         <Container>
           <div className="flex flex-col gap-16">
             {docCategories.map((category) =>
