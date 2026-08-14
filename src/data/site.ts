@@ -23,6 +23,7 @@ export const mainNav: NavItem[] = [
   { label: "Solutions", href: "/solutions" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
+  { label: "Docs", href: "/docs" },
 ];
 
 export type HomeStat = {
@@ -79,6 +80,7 @@ export const footerNav: FooterLinkGroup[] = [
   {
     title: "Resources",
     links: [
+      { label: "Documentation", href: "/docs" },
       { label: "Game Aggregation", href: "/game-aggregation" },
       { label: "Providers", href: "/providers" },
       { label: "Talk to Sales", href: "/contact" },
