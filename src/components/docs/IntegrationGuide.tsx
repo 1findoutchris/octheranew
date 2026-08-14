@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
+import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 type Token = { t: string; c?: "key" | "str" | "num" | "comment" | "var" };
@@ -355,9 +355,14 @@ export function IntegrationGuide() {
 
       <div className="border-t border-border pt-8 text-center text-sm text-muted">
         Need help integrating?{" "}
-        <Link href="/contact" className="font-medium text-primary-bright hover:underline">
+        <a
+          href={siteConfig.telegram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-primary-bright hover:underline"
+        >
           Contact Tech Support
-        </Link>
+        </a>
       </div>
     </div>
   );

@@ -36,7 +36,14 @@ export default function ContactPage() {
                 <span className="flex size-9 items-center justify-center rounded-lg bg-primary-soft text-primary-bright">
                   <Icon name="headset" className="size-4" />
                 </span>
-                <span>{siteConfig.email}</span>
+                <a
+                  href={siteConfig.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-foreground transition-colors hover:text-primary-bright"
+                >
+                  Message us on Telegram
+                </a>
               </div>
             </Reveal>
 
