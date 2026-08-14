@@ -23,8 +23,7 @@ export default function ContactPage() {
 
       <section className="pb-24 lg:pb-32">
         <Container>
-          <Reveal className="card-surface border-glow glow-primary relative mx-auto max-w-2xl overflow-hidden rounded-3xl px-6 py-16 text-center sm:px-16 sm:py-20">
-            <div className="absolute inset-0 bg-radial-fade" />
+          <Reveal className="relative mx-auto max-w-2xl px-6 py-16 text-center sm:px-16 sm:py-20">
             <div className="animate-pulse-glow absolute left-1/2 top-0 h-48 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/25 blur-3xl" />
             <div className="relative">
               <div className="mx-auto flex size-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-amber text-white shadow-[0_8px_28px_-8px_var(--color-primary-glow)]">
