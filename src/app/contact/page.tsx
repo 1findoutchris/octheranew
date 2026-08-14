@@ -3,13 +3,13 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Talk to Sales",
   description:
-    "Talk to the Octhera team about casino aggregation, sportsbook, turnkey, white label or enterprise gaming infrastructure.",
+    "Message the Octhera team on Telegram about casino aggregation, sportsbook, turnkey, white label or enterprise gaming infrastructure.",
 };
 
 export default function ContactPage() {
@@ -18,39 +18,37 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Talk to Sales"
         title="Let's talk about your business"
-        description="Tell us where you are today and where you want to go. Our team will follow up with the right next step."
+        description="Tell us where you are today and where you want to go. Message our team directly on Telegram and we'll follow up with the right next step."
       />
 
       <section className="pb-24 lg:pb-32">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
-            <Reveal>
-              <h2 className="text-lg font-semibold text-foreground">Get in touch</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                Whether you&apos;re evaluating a first launch or looking to add
-                aggregation, payments or a sportsbook to an existing platform,
-                our team can help you scope the right solution.
+          <Reveal className="card-surface border-glow glow-primary relative mx-auto max-w-2xl overflow-hidden rounded-3xl px-6 py-16 text-center sm:px-16 sm:py-20">
+            <div className="absolute inset-0 bg-radial-fade" />
+            <div className="animate-pulse-glow absolute left-1/2 top-0 h-48 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/25 blur-3xl" />
+            <div className="relative">
+              <div className="mx-auto flex size-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-amber text-white shadow-[0_8px_28px_-8px_var(--color-primary-glow)]">
+                <Icon name="telegram" className="size-10" />
+              </div>
+
+              <h2 className="mt-7 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+                Chat with us on Telegram
+              </h2>
+              <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-muted">
+                The fastest way to reach the Octhera team. Send a message and
+                we&apos;ll get back to you directly — no forms, no waiting.
               </p>
 
-              <div className="mt-8 flex items-center gap-3 text-sm text-muted">
-                <span className="flex size-9 items-center justify-center rounded-lg bg-primary-soft text-primary-bright">
-                  <Icon name="headset" className="size-4" />
-                </span>
-                <a
-                  href={siteConfig.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-foreground transition-colors hover:text-primary-bright"
-                >
-                  Message us on Telegram
-                </a>
+              <div className="mt-10">
+                <Button href={siteConfig.telegram} external size="lg" className="mx-auto">
+                  <Icon name="telegram" className="size-5" />
+                  Message on Telegram
+                </Button>
               </div>
-            </Reveal>
 
-            <Reveal delay={100}>
-              <ContactForm />
-            </Reveal>
-          </div>
+              <p className="mt-5 text-sm font-medium text-muted">@Noah_Octhera</p>
+            </div>
+          </Reveal>
         </Container>
       </section>
     </>

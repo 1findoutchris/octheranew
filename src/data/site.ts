@@ -87,20 +87,3 @@ export const footerNav: FooterLinkGroup[] = [
     ],
   },
 ];
-
-export const contactProductOptions = [
-  "Casino Aggregation",
-  "Sportsbook",
-  "Turnkey",
-  "White Label",
-  "Casino API",
-  "Enterprise",
-] as const;
-
-export const launchTimelineOptions = [
-  "Immediately",
-  "1–3 months",
-  "3–6 months",
-  "6-12 months",
-  "Just exploring",
-] as const;
