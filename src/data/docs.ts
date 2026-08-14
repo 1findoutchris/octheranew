@@ -70,22 +70,6 @@ export const docCategories: DocCategory[] = [
     ],
   },
   {
-    slug: "webhooks",
-    icon: "webhook",
-    title: "Webhooks",
-    description: "Subscribe to real-time events for wallet, gameplay and account changes.",
-    topics: [
-      "Configuring webhook endpoints",
-      "Verifying webhook signatures",
-      "Retry and delivery guarantees",
-      "Event reference",
-    ],
-    endpoints: [
-      { method: "POST", path: "/v1/webhooks", description: "Register a webhook endpoint" },
-      { method: "GET", path: "/v1/webhooks/events", description: "List supported event types" },
-    ],
-  },
-  {
     slug: "wallet-payments-api",
     icon: "wallet",
     title: "Wallet & Payments API",

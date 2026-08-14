@@ -149,32 +149,36 @@ const launchResponseTokens: Token[] = [
 ];
 
 const signatureVerificationTokens: Token[] = [
+  { t: "const crypto = require(" },
+  { t: "'crypto'", c: "str" },
+  { t: ");\n\n" },
   { t: "// 1. Get Payload & Header", c: "comment" },
-  { t: "\n$payload", c: "var" },
-  { t: " = file_get_contents(" },
-  { t: "'php://input'", c: "str" },
-  { t: ");\n$signature", c: "var" },
-  { t: " = $_SERVER[" },
-  { t: "'HTTP_X_SIGNATURE'", c: "str" },
-  { t: "];\n$secret", c: "var" },
+  { t: "\nconst payload", c: "var" },
+  { t: " = req.rawBody;\nconst signature", c: "var" },
+  { t: " = req.headers[" },
+  { t: "'x-signature'", c: "str" },
+  { t: "];\nconst secret", c: "var" },
   { t: " = " },
   { t: "'{YOUR_SECRET_KEY}'", c: "str" },
   { t: ";\n\n" },
   { t: "// 2. Calculate Expected Signature", c: "comment" },
-  { t: "\n$expected", c: "var" },
-  { t: " = hash_hmac(" },
+  { t: "\nconst expected", c: "var" },
+  { t: " = crypto\n  .createHmac(" },
   { t: "'sha256'", c: "str" },
   { t: ", " },
-  { t: "$payload", c: "var" },
-  { t: ", " },
-  { t: "$secret", c: "var" },
+  { t: "secret", c: "var" },
+  { t: ")\n  .update(" },
+  { t: "payload", c: "var" },
+  { t: ")\n  .digest(" },
+  { t: "'hex'", c: "str" },
   { t: ");\n\n" },
   { t: "// 3. Compare Securely", c: "comment" },
-  { t: "\nif (!hash_equals(" },
-  { t: "$expected", c: "var" },
-  { t: ", " },
-  { t: "$signature", c: "var" },
-  { t: ")) {\n  http_response_code(401);\n  die(" },
+  { t: "\nconst valid", c: "var" },
+  { t: " = crypto.timingSafeEqual(\n  Buffer.from(" },
+  { t: "expected", c: "var" },
+  { t: "),\n  Buffer.from(" },
+  { t: "signature", c: "var" },
+  { t: ")\n);\n\nif (!valid) {\n  return res.status(401).send(" },
   { t: "'Invalid Signature'", c: "str" },
   { t: ");\n}" },
 ];
@@ -330,7 +334,7 @@ export function IntegrationGuide() {
         </p>
 
         <div>
-          <Label>Signature Verification (PHP)</Label>
+          <Label>Signature Verification (JavaScript)</Label>
           <Code tokens={signatureVerificationTokens} />
         </div>
 
