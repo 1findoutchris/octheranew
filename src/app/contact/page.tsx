@@ -54,8 +54,6 @@ export default function ContactPage() {
                   Message on Telegram
                 </Button>
               </div>
-
-              <p className="mt-5 text-sm font-medium text-muted">@Noah_Octhera</p>
             </div>
           </Reveal>
         </div>
