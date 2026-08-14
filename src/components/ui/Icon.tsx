@@ -39,7 +39,9 @@ export type IconName =
   | "puzzle"
   | "trending-up"
   | "link"
-  | "grid";
+  | "grid"
+  | "code"
+  | "alert-triangle";
 
 const paths: Record<IconName, React.ReactNode> = {
   aggregator: (
@@ -285,6 +287,18 @@ const paths: Record<IconName, React.ReactNode> = {
       <rect x="13.5" y="3.5" width="7" height="7" rx="1.2" />
       <rect x="3.5" y="13.5" width="7" height="7" rx="1.2" />
       <rect x="13.5" y="13.5" width="7" height="7" rx="1.2" />
+    </>
+  ),
+  code: (
+    <>
+      <path d="M9 8 4.5 12 9 16" />
+      <path d="M15 8l4.5 4-4.5 4" />
+    </>
+  ),
+  "alert-triangle": (
+    <>
+      <path d="M12 4 21 19H3L12 4Z" />
+      <path d="M12 10v4M12 16.5h.01" />
     </>
   ),
 };
