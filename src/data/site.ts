@@ -22,8 +22,8 @@ export const mainNav: NavItem[] = [
   { label: "Platform", href: "/platform" },
   { label: "Solutions", href: "/solutions" },
   { label: "Pricing", href: "/pricing" },
-  { label: "About", href: "/about" },
   { label: "Docs", href: "/docs" },
+  { label: "About", href: "/about" },
 ];
 
 export type HomeStat = {
