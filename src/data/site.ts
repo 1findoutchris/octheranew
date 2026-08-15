@@ -10,7 +10,6 @@ export const siteConfig = {
   description:
     "Octhera is a B2B iGaming technology platform providing casino aggregation, sportsbook, turnkey and white-label infrastructure for operators worldwide.",
   url: "https://www.octhera.com",
-  ogImage: "/og-image.png",
   telegram: "https://t.me/Noah_Octhera",
 };
 
