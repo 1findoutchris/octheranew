@@ -8,6 +8,8 @@ export type PricingPlan = {
   /** Current discounted price, shown prominently. */
   currentPrice: number;
   priceNote: string;
+  /** Gross gaming revenue share, where applicable. */
+  ggrRate?: string;
   features: string[];
   cta: string;
   highlighted?: boolean;
@@ -29,6 +31,7 @@ export const pricingPlans: PricingPlan[] = [
     originalPrice: 1500,
     currentPrice: 999,
     priceNote: "Limited-time launch pricing for new operators.",
+    ggrRate: "18%",
     features: [
       "Single API access to the aggregated catalog",
       "Provider and game catalog management",
@@ -45,6 +48,7 @@ export const pricingPlans: PricingPlan[] = [
     originalPrice: 4000,
     currentPrice: 2499,
     priceNote: "Limited-time launch pricing for new brands.",
+    ggrRate: "14%",
     features: [
       "Ready-made platform and branding tools",
       "Game aggregation included",
@@ -78,6 +82,7 @@ export const pricingPlans: PricingPlan[] = [
     originalPrice: 35000,
     currentPrice: 29999,
     priceNote: "Limited-time launch pricing for large-scale deployments.",
+    ggrRate: "12%",
     features: [
       "Custom infrastructure and architecture",
       "Dedicated account and technical support",

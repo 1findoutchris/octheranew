@@ -37,6 +37,9 @@ export function PricingCard({ plan, delay = 0 }: { plan: PricingPlan; delay?: nu
         </div>
       </div>
       <p className="mt-2 text-xs leading-relaxed text-muted">{plan.priceNote}</p>
+      {plan.ggrRate && (
+        <p className="mt-2 text-sm font-semibold text-primary-bright">{plan.ggrRate} of GGR</p>
+      )}
 
       <ul className="mt-6 flex-1 space-y-3">
         {plan.features.map((feature) => (
