@@ -21,9 +21,21 @@ export const catalogTotals: {
   scope: null,
 };
 
-/** Number of studios listed in the public /providers directory. */
-export const directoryProviderCount = providers.length;
+/** Number of entries in the public /providers directory. */
+export const directoryEntryCount = providers.length;
 
-/** Scope note for the directory, which lists studios, not confirmed integrations. */
+/**
+ * Distinct brand names: an entry like "Evolution Live" is counted with
+ * "Evolution" when both are listed, because it is a product line of the
+ * same studio. This is not a verified count of studio relationships.
+ */
+export const directoryBrandCount = new Set(
+  providers.map((p) => {
+    const base = p.name.replace(/ Live$/, "");
+    return providers.some((other) => other.name === base) ? base : p.name;
+  })
+).size;
+
+/** Scope note: the directory lists studios, not confirmed integrations or partnerships. */
 export const directoryScope =
-  "Studios listed in our directory. Availability for your markets and plan is confirmed during onboarding.";
+  "A listing is not a confirmed partnership or market authorisation. Availability for your markets and plan is confirmed with sales before you sign.";

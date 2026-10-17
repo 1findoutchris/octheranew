@@ -359,7 +359,7 @@ export function IntegrationGuide() {
           href={siteConfig.telegram}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-medium text-primary-bright hover:underline"
+          className="link-inline"
         >
           Contact Tech Support
         </a>

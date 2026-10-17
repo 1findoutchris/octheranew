@@ -61,8 +61,8 @@ export default function OpengraphImage() {
         </div>
 
         <div style={{ display: "flex", marginTop: 24, fontSize: 26, color: "#a3a3a3", maxWidth: 880, lineHeight: 1.5 }}>
-          B2B casino aggregation, sportsbook, turnkey and white-label
-          infrastructure for operators worldwide.
+          B2B casino aggregation, sportsbook, white-label and turnkey
+          technology for licensed operators.
         </div>
       </div>
     ),

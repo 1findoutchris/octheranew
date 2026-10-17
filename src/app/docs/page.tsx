@@ -25,7 +25,7 @@ export default function DocsPage() {
             How to connect your platform to Octhera game aggregation: launch a game session, then
             settle bets, wins and refunds through a signed wallet callback. For a summary of the
             integration and onboarding steps, see the{" "}
-            <Link href="/products/casino-api" className="font-medium text-primary-bright hover:underline">
+            <Link href="/products/casino-api" className="link-inline">
               Casino API overview
             </Link>
             .
@@ -33,7 +33,7 @@ export default function DocsPage() {
         }
       />
 
-      <section className="py-24 lg:py-32">
+      <section className="theme-light section-y">
         <Container>
           <Reveal id="getting-started" className="scroll-mt-28">
             <IntegrationGuide />
@@ -42,12 +42,11 @@ export default function DocsPage() {
       </section>
 
       <CTASection
-        eyebrow="API Access"
         title="Ready to start integrating?"
-        description="Talk to our team to get sandbox credentials and start building against the launch and wallet callback flows."
-        primaryLabel="Talk to Sales"
-        primaryHref="/contact"
-        secondaryLabel="View API Pricing"
+        description="Sandbox credentials are issued after a short conversation about your platform and markets."
+        primaryLabel="Discuss sandbox access"
+        context={{ request: "sandbox", product: "casino-api" }}
+        secondaryLabel="View API pricing"
         secondaryHref="/pricing#game-aggregation-api"
       />
     </>

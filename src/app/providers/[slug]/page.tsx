@@ -11,8 +11,8 @@ import {
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { directoryScope } from "@/data/catalog";
 import { pageMetadata } from "@/lib/seo";
+import { contactHref } from "@/lib/contact-context";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { ProviderCard } from "@/components/providers/ProviderCard";
 
@@ -51,90 +51,80 @@ export default async function ProviderDetailPage({
 
   return (
     <>
-      <section className="relative overflow-hidden pt-40 pb-16 lg:pt-48 lg:pb-20">
-        <div className="absolute inset-0 bg-grid opacity-[0.35] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)]" />
-        <div className="absolute inset-0 bg-radial-fade" />
-        <Container className="relative">
-          <Reveal>
-            <Breadcrumbs
-              crumbs={[
-                { name: "Home", path: "/" },
-                { name: "Providers", path: "/providers" },
-                { name: provider.name, path: `/providers/${provider.slug}` },
-              ]}
-            />
-
-            <div className="mt-6 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-              <div className="flex size-16 items-center justify-center rounded-2xl border border-border bg-elevated font-mono text-lg font-semibold uppercase text-primary-bright">
-                {provider.name.slice(0, 2)}
-              </div>
-              <div>
-                <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-                  {provider.name}
-                </h1>
-                <p className="mt-1 text-sm text-muted">{provider.categories.join(" • ")}</p>
-              </div>
-            </div>
-          </Reveal>
+      <section className="border-b border-border bg-background section-y">
+        <Container>
+          <Breadcrumbs
+            crumbs={[
+              { name: "Home", path: "/" },
+              { name: "Providers", path: "/providers" },
+              { name: provider.name, path: `/providers/${provider.slug}` },
+            ]}
+          />
+          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.14em] text-primary-bright">
+            Provider directory entry
+          </p>
+          <h1 className="type-h1 mt-4">{provider.name}</h1>
+          <p className="type-lead mt-4 text-muted">{provider.categories.join(" · ")}</p>
         </Container>
       </section>
 
-      <section className="pb-24 lg:pb-32">
+      <section className="theme-light section-y">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
-            <Reveal>
-              <h2 className="text-xl font-semibold text-foreground">Overview</h2>
-              <p className="mt-4 text-base leading-relaxed text-muted">{provider.description}</p>
+            <div>
+              <h2 className="type-h3">Overview</h2>
+              <p className="mt-4 max-w-[65ch] text-base text-muted">{provider.description}</p>
 
-              <h2 className="mt-10 text-xl font-semibold text-foreground">Supported Categories</h2>
-              <div className="mt-4 flex flex-wrap gap-2">
+              <h2 className="type-h3 mt-10">Listed categories</h2>
+              <ul className="mt-4 flex flex-wrap gap-2">
                 {provider.categories.map((category) => (
-                  <span
+                  <li
                     key={category}
-                    className="rounded-full border border-border bg-elevated px-3.5 py-1.5 text-xs font-medium text-foreground"
+                    className="rounded-lg border border-border-strong bg-elevated px-3 py-1.5 text-sm font-medium text-foreground"
                   >
                     {category}
-                  </span>
+                  </li>
                 ))}
-              </div>
-            </Reveal>
+              </ul>
+            </div>
 
-            <Reveal className="card-surface h-fit rounded-2xl p-6">
-              <dl className="space-y-5">
-                <div className="flex items-center justify-between border-b border-border pb-5">
-                  <dt className="text-xs uppercase tracking-wide text-muted">Game Count</dt>
-                  <dd className="text-sm font-medium text-foreground">
-                    {provider.gameCount ?? "—"}
-                  </dd>
-                </div>
-                <div className="flex items-center justify-between">
-                  <dt className="text-xs uppercase tracking-wide text-muted">Availability</dt>
-                  <dd className="rounded-full border border-primary-border bg-primary-soft px-3 py-1 text-xs font-medium text-primary-bright">
+            <div className="card-surface h-fit rounded-xl p-5 md:p-6">
+              <dl className="space-y-4">
+                {/* Unknown counts are omitted rather than shown as a dash. */}
+                {provider.gameCount !== null && (
+                  <div className="flex items-center justify-between gap-4">
+                    <dt className="text-base text-muted">Games</dt>
+                    <dd className="text-base font-medium text-foreground">{provider.gameCount}</dd>
+                  </div>
+                )}
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="text-base text-muted">Availability</dt>
+                  <dd className="rounded-md border border-border-strong px-2 py-0.5 text-sm font-medium text-foreground">
                     {availabilityLabels[provider.availability]}
                   </dd>
                 </div>
               </dl>
-              <p className="mt-5 text-xs leading-relaxed text-muted">{directoryScope}</p>
+              <p className="mt-5 text-sm text-muted">{directoryScope}</p>
 
-              <Button href="/contact" size="md" className="mt-6 w-full">
-                Request Provider Access
-              </Button>
-              <Link
-                href="/products/casino-aggregator"
-                className="mt-4 block text-center text-xs font-medium text-primary-bright hover:underline"
+              <Button
+                href={contactHref({ request: "provider-access", provider: provider.slug })}
+                className="mt-6 w-full"
               >
+                Ask about {provider.name}
+              </Button>
+              <Link href="/products/casino-aggregator" className="link-inline mt-4 inline-block text-base">
                 How the casino aggregator works
               </Link>
-            </Reveal>
+            </div>
           </div>
         </Container>
       </section>
 
       {related.length > 0 && (
-        <section className="border-t border-border bg-surface py-24 lg:py-32">
+        <section className="theme-light section-y border-t border-border">
           <Container>
-            <h2 className="text-xl font-semibold text-foreground">Related providers</h2>
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            <h2 className="type-h3">Related directory entries</h2>
+            <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
               {related.map((p) => (
                 <ProviderCard key={p.slug} provider={p} />
               ))}
