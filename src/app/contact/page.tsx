@@ -10,7 +10,7 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = pageMetadata({
   title: "Contact Sales",
   description:
-    "Message the Octhera team on Telegram about casino aggregation, the casino API, sportsbook, white label, turnkey or enterprise infrastructure.",
+    "Contact Octhera sales on Telegram or at sales@octhera.org about casino aggregation, the casino API, sportsbook, white label, turnkey or enterprise plans.",
   path: "/contact",
 });
 
@@ -31,8 +31,8 @@ export default function ContactPage() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
               Tell us where you are today and where you want to go. Message
-              our team directly on Telegram and we&apos;ll follow up with the
-              right next step.
+              our team on Telegram or email sales, and we&apos;ll follow up
+              with the right next step.
             </p>
             <h2 className="mt-10 text-sm font-semibold uppercase tracking-[0.14em] text-primary-bright">
               To get a faster answer, include
@@ -70,7 +70,7 @@ export default function ContactPage() {
               </h2>
               <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-muted">
                 The fastest way to reach the Octhera team. Send a message and
-                we&apos;ll get back to you directly — no forms, no waiting.
+                we&apos;ll get back to you directly.
               </p>
 
               <div className="mt-10">
@@ -78,6 +78,32 @@ export default function ContactPage() {
                   <Icon name="telegram" className="size-5" />
                   Message on Telegram
                 </Button>
+              </div>
+
+              <div className="mx-auto mt-10 max-w-md border-t border-border pt-8">
+                <h2 className="text-xl font-semibold tracking-tight text-foreground">
+                  Prefer email?
+                </h2>
+                <p className="mt-2 text-base text-muted">
+                  Write to{" "}
+                  <a
+                    href={`mailto:${siteConfig.salesEmail}`}
+                    className="font-medium text-primary-bright hover:underline"
+                  >
+                    {siteConfig.salesEmail}
+                  </a>
+                </p>
+                <div className="mt-5">
+                  <Button
+                    href={`mailto:${siteConfig.salesEmail}?subject=${encodeURIComponent("Octhera enquiry")}`}
+                    size="lg"
+                    variant="secondary"
+                    className="mx-auto"
+                  >
+                    <Icon name="mail" className="size-5" />
+                    Email Sales
+                  </Button>
+                </div>
               </div>
             </div>
           </Reveal>

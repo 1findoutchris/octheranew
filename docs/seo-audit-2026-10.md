@@ -4,6 +4,22 @@ Scope: the `octheranew` Next.js 16 app, deployed by Railway from `main`. The Rai
 
 The Search Console figures from October 17, 2026 are historical. Every finding below was re-checked against the current source, a local production build and Railway logs. I couldn't reach the live site from the audit environment, so the live checks are listed under post-deployment steps.
 
+## 0. Update (October 17, 2026, after merging PR #7): the public domain does not reach Railway
+
+After PR #7 merged, Railway deployed `e280816` successfully, but octhera.org still served the old page.
+
+Evidence from Railway (read through the Railway API):
+- **Domain status:** Railway's domain check for `octhera.org` reports `DNS_RECORD_STATUS_REQUIRES_UPDATE`. It requires `CNAME octhera.org → 7sw04pi5.up.railway.app` and finds no matching record. The certificate is valid and the domain is verified.
+- **No traffic:** the service has received **0 HTTP requests in the last 7 days**. The last request reached Railway on October 10, 2026 at 14:34 UTC. Before that it handled normal traffic (homepage, robots.txt, Googlebot).
+- **DNS points elsewhere:** the apex A record points to `196.188.250.167`. This is not a Railway address. If that host were a reverse proxy forwarding to Railway, Railway would log its requests. It logs none, so `196.188.250.167` is serving content on its own: either a separate origin with an old copy of the site, or a proxy answering only from its cache.
+- **Ownership not confirmed:** `196.188.0.0/16` appears to be in Ethio Telecom's AFRINIC allocation. This is unconfirmed, because the audit environment couldn't reach RDAP or the host itself.
+- **Timing:** the cutover happened between October 10 at 14:34 UTC and the Search Console indexing report of October 11. Everything Google has crawled since then came from that host, not from this repository.
+
+Recommended fix:
+1. Identify who runs `196.188.250.167` and why the apex was moved there (hosting, CDN or WAF, or a mistake).
+2. If there's no deliberate reason, replace the apex A record with what Railway requires: `CNAME`/`ALIAS`/`ANAME` (CNAME flattening) to `7sw04pi5.up.railway.app`. Some DNS providers don't support flattening at the apex; in that case use the provider's ALIAS type or move DNS to a provider that does. Leave the Google verification TXT record untouched.
+3. If the host is a deliberate proxy, configure it to forward to `7sw04pi5.up.railway.app` with the `Host: octhera.org` header, purge its cache, and don't cache HTML for long.
+
 ## 1. Findings by priority
 
 ### Confirmed defects (fixed in this change)
@@ -127,7 +143,7 @@ Nothing below is published until it's confirmed.
 
 15. Legal entity name, registered address, year founded, team or leadership, and certifications or testing-lab approvals (if any).
 16. Real product screenshots or a short demo video of the back office, lobby or sportsbook.
-17. A business email address or CRM-backed demo form with a monitored destination. Until then, Telegram (`t.me/Noah_Octhera`, a personal handle) is the only contact route. Consider a company channel.
+17. ~~Business email~~: done. `sales@octhera.org` is shown on Contact, in every CTA section, in the footer and in the Organization schema. Still open: a CRM-backed demo form (only if it has a monitored destination), and a company Telegram channel instead of a personal handle.
 18. Privacy policy and terms of use. No legal pages exist.
 
 ## 5. Remaining infrastructure work

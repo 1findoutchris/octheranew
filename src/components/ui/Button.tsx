@@ -56,6 +56,13 @@ export function Button(props: ButtonAsLink | ButtonAsButton) {
   );
 
   if ("href" in props && props.href) {
+    if (props.href.startsWith("mailto:")) {
+      return (
+        <a href={props.href} className={classes}>
+          {content}
+        </a>
+      );
+    }
     if (props.external) {
       return (
         <a href={props.href} target="_blank" rel="noopener noreferrer" className={classes}>

@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { siteConfig } from "@/data/site";
 
 export function CTASection({
   eyebrow = "Get Started",
@@ -44,6 +45,15 @@ export function CTASection({
                 {secondaryLabel}
               </Button>
             </div>
+            <p className="mt-6 text-sm text-muted">
+              Or email sales at{" "}
+              <a
+                href={`mailto:${siteConfig.salesEmail}`}
+                className="font-medium text-primary-bright hover:underline"
+              >
+                {siteConfig.salesEmail}
+              </a>
+            </p>
           </div>
         </Reveal>
       </Container>

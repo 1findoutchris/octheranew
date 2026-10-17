@@ -22,6 +22,14 @@ export function Footer() {
                 Talk to Sales
               </Button>
             </div>
+            <p className="mt-4 text-sm text-muted">
+              <a
+                href={`mailto:${siteConfig.salesEmail}`}
+                className="font-medium text-foreground hover:text-primary-bright"
+              >
+                {siteConfig.salesEmail}
+              </a>
+            </p>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">

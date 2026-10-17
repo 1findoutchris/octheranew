@@ -55,6 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             contactPoint: {
               "@type": "ContactPoint",
               contactType: "sales",
+              email: siteConfig.salesEmail,
               url: siteConfig.telegram,
             },
           }}
