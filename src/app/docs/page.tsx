@@ -3,9 +3,8 @@ import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { Reveal } from "@/components/ui/Reveal";
 import { CTASection } from "@/components/sections/CTASection";
-import { IntegrationGuide } from "@/components/docs/IntegrationGuide";
+import { IntegrationGuide, guideSections } from "@/components/docs/IntegrationGuide";
 
 export const metadata: Metadata = pageMetadata({
   title: "Casino API Documentation: Game Launch & Wallet Callback",
@@ -34,10 +33,22 @@ export default function DocsPage() {
       />
 
       <section className="theme-light section-y">
-        <Container>
-          <Reveal id="getting-started" className="scroll-mt-28">
+        <Container className="grid gap-10 lg:grid-cols-[220px_1fr]">
+          <nav aria-label="On this page" className="lg:sticky lg:top-24 lg:self-start">
+            <p className="text-sm font-semibold text-foreground">On this page</p>
+            <ul className="mt-2">
+              {guideSections.map((s) => (
+                <li key={s.id}>
+                  <a href={`#${s.id}`} className="flex min-h-11 items-center text-base text-muted hover:text-foreground hover:underline">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="min-w-0 max-w-[960px]">
             <IntegrationGuide />
-          </Reveal>
+          </div>
         </Container>
       </section>
 
