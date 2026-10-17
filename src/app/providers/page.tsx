@@ -4,20 +4,23 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ProviderCatalog } from "@/components/providers/ProviderCatalog";
 import { CTASection } from "@/components/sections/CTASection";
+import { directoryProviderCount, directoryScope } from "@/data/catalog";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Game Providers",
+export const metadata: Metadata = pageMetadata({
+  title: "Casino Game Provider Directory",
   description:
-    "Discover the studios and game categories available through the Octhera aggregation ecosystem, with search and filtering by category.",
-};
+    "Browse game studios in the Octhera provider directory by category: slots, live casino, crash, table games and more. Market availability confirmed on request.",
+  path: "/providers",
+});
 
 export default function ProvidersPage() {
   return (
     <>
       <PageHeader
         eyebrow="Game Providers"
-        title="Game Providers"
-        description="Discover the studios and game categories available through the Octhera aggregation ecosystem."
+        title="Casino game provider directory"
+        description={`${directoryProviderCount} studios listed, filterable by game category. ${directoryScope}`}
       />
 
       <section className="pb-24 lg:pb-32">

@@ -8,8 +8,10 @@ import { cn } from "@/lib/cn";
 export function PricingCard({ plan, delay = 0 }: { plan: PricingPlan; delay?: number }) {
   return (
     <Reveal
+      id={plan.slug}
       delay={delay}
       className={cn(
+        "scroll-mt-28",
         "card-surface relative flex flex-col rounded-2xl p-6",
         plan.highlighted && "border-glow"
       )}
@@ -30,16 +32,18 @@ export function PricingCard({ plan, delay = 0 }: { plan: PricingPlan; delay?: nu
 
       <div className="mt-6">
         <span className="text-sm font-medium text-muted line-through decoration-muted/70">
+          <span className="sr-only">List price </span>
           {formatPrice(plan.originalPrice, plan.currency)}
         </span>
         <div className="mt-1 text-4xl font-extrabold tracking-tight text-gradient-accent">
+          <span className="sr-only">Launch price </span>
           {formatPrice(plan.currentPrice, plan.currency)}
         </div>
       </div>
       <p className="mt-2 text-xs leading-relaxed text-muted">{plan.priceNote}</p>
-      {plan.ggrRate && (
-        <p className="mt-2 text-sm font-semibold text-primary-bright">{plan.ggrRate} of GGR</p>
-      )}
+      <p className="mt-2 text-sm font-semibold text-primary-bright">
+        {plan.ggrRate ? `+ ${plan.ggrRate} of GGR` : "No GGR rate published"}
+      </p>
 
       <ul className="mt-6 flex-1 space-y-3">
         {plan.features.map((feature) => (

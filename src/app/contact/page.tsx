@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Talk to Sales",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Sales",
   description:
-    "Message the Octhera team on Telegram about casino aggregation, sportsbook, turnkey, white label or enterprise gaming infrastructure.",
-};
+    "Message the Octhera team on Telegram about casino aggregation, the casino API, sportsbook, white label, turnkey or enterprise infrastructure.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
@@ -31,6 +34,28 @@ export default function ContactPage() {
               our team directly on Telegram and we&apos;ll follow up with the
               right next step.
             </p>
+            <h2 className="mt-10 text-sm font-semibold uppercase tracking-[0.14em] text-primary-bright">
+              To get a faster answer, include
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted">
+              <li>Your company name and the markets and licences you operate under</li>
+              <li>
+                The product you&apos;re interested in, such as the{" "}
+                <Link href="/products/casino-aggregator" className="text-primary-bright hover:underline">
+                  casino aggregator
+                </Link>
+                ,{" "}
+                <Link href="/products/sportsbook" className="text-primary-bright hover:underline">
+                  sportsbook
+                </Link>{" "}
+                or a{" "}
+                <Link href="/pricing" className="text-primary-bright hover:underline">
+                  published plan
+                </Link>
+              </li>
+              <li>Your current platform, if you have one, and the studios you need</li>
+              <li>Your target launch timeline</li>
+            </ul>
           </Reveal>
 
           <Reveal delay={120} className="relative px-6 py-8 text-center sm:px-0">

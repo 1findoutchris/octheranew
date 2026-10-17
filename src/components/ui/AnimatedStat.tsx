@@ -2,54 +2,46 @@
 
 import { useEffect, useRef, useState } from "react";
 
+/** Only plain counts like "50" or "1,200+" animate; anything else ("24/7", "USD") renders as-is. */
 function splitValue(value: string) {
-  const match = value.match(/^([\d,]+)(.*)$/);
-  if (!match) return { hasNumber: false as const, target: 0, prefix: "", suffix: value };
+  const match = value.match(/^([\d,]+)(\+?)$/);
+  if (!match) return null;
   const target = Number(match[1].replace(/,/g, ""));
-  if (Number.isNaN(target)) return { hasNumber: false as const, target: 0, prefix: "", suffix: value };
-  return { hasNumber: true as const, target, prefix: "", suffix: match[2] };
+  return Number.isNaN(target) ? null : { target, suffix: match[2] };
 }
 
+/**
+ * Renders the final value on the server so it is present in raw HTML and for
+ * users without JavaScript; counting up is a client-only enhancement that is
+ * skipped under prefers-reduced-motion. The animated digits are hidden from
+ * assistive technology, which reads the final value instead.
+ */
 export function AnimatedStat({ value, className }: { value: string; className?: string }) {
   const ref = useRef<HTMLSpanElement | null>(null);
-  const parsed = splitValue(value);
-  const [display, setDisplay] = useState<string>(() =>
-    parsed.hasNumber ? `0${parsed.suffix}` : value
-  );
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
     const node = ref.current;
-    const { hasNumber, target, suffix } = splitValue(value);
-    if (!node || !hasNumber) return;
+    const parsed = splitValue(value);
+    if (!node || !parsed) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let frame: number;
+    let frame = 0;
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          observer.disconnect();
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
 
-          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-          if (reducedMotion) {
-            setDisplay(value);
-            return;
-          }
-
-          const duration = 1400;
-          const start = performance.now();
-
-          const tick = (now: number) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const current = Math.round(eased * target);
-            setDisplay(`${current.toLocaleString("en-US")}${suffix}`);
-            if (progress < 1) {
-              frame = requestAnimationFrame(tick);
-            }
-          };
-
-          frame = requestAnimationFrame(tick);
-        }
+        const duration = 1400;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setDisplay(`${Math.round(eased * parsed.target).toLocaleString("en-US")}${parsed.suffix}`);
+          if (progress < 1) frame = requestAnimationFrame(tick);
+          else setDisplay(value);
+        };
+        frame = requestAnimationFrame(tick);
       },
       { threshold: 0.4 }
     );
@@ -57,13 +49,14 @@ export function AnimatedStat({ value, className }: { value: string; className?: 
     observer.observe(node);
     return () => {
       observer.disconnect();
-      if (frame) cancelAnimationFrame(frame);
+      cancelAnimationFrame(frame);
     };
   }, [value]);
 
   return (
     <span ref={ref} className={className}>
-      {display}
+      <span className="sr-only">{value}</span>
+      <span aria-hidden="true">{display}</span>
     </span>
   );
 }

@@ -4,8 +4,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Icon, type IconName } from "@/components/ui/Icon";
 
 const reasons: { icon: IconName; title: string; description: string }[] = [
-  { icon: "bolt", title: "Fast Integration", description: "A single, well-documented API gets your team from contract to live environment quickly." },
-  { icon: "globe", title: "Global Content", description: "Access a growing catalog of studios and game categories through one connection." },
+  { icon: "bolt", title: "Documented Integration", description: "One launch endpoint and one signed wallet callback, with sandbox credentials to test before go-live." },
+  { icon: "globe", title: "Multi-Studio Content", description: "Studios across slots, live casino, crash and more through one connection, confirmed for your markets." },
   { icon: "puzzle", title: "Modular Architecture", description: "Take the whole platform or just the pieces you need — aggregation, payments, back office." },
   { icon: "sliders", title: "Operator Control", description: "Configure bonuses, limits, risk rules and player management the way your business runs." },
   { icon: "server", title: "Scalable Infrastructure", description: "Built to handle growth in traffic, transactions and markets without re-platforming." },
@@ -18,7 +18,7 @@ export function WhyOcthera() {
       <Container>
         <SectionHeading
           eyebrow="Why Octhera"
-          title="Why Operators Choose Octhera"
+          title="What operators get with Octhera"
           align="center"
           className="mx-auto"
         />

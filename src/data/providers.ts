@@ -121,6 +121,15 @@ export function getRelatedProviders(provider: Provider, limit = 4): Provider[] {
     .slice(0, limit);
 }
 
+/**
+ * A provider page is worth indexing only once its availability is confirmed;
+ * until then it stays reachable for visitors but is noindexed and kept out of
+ * the sitemap so 50 near-identical pages don't dilute the product pages.
+ */
+export function isProviderIndexable(provider: Provider): boolean {
+  return provider.availability !== "contact";
+}
+
 export const availabilityLabels: Record<ProviderAvailability, string> = {
   available: "Available",
   planned: "Planned",

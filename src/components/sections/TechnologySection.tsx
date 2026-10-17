@@ -16,11 +16,10 @@ const technologies: { icon: IconName; title: string; description: string }[] = [
 const codeLines = [
   { indent: 0, text: "POST /v1/games/launch" },
   { indent: 0, text: "{" },
-  { indent: 1, text: '"operatorId": "op_live_xxxxxxx",' },
-  { indent: 1, text: '"playerId": "player_xxxxxxx",' },
-  { indent: 1, text: '"provider": "provider_slug",' },
-  { indent: 1, text: '"currency": "EUR",' },
-  { indent: 1, text: '"mode": "real"' },
+  { indent: 1, text: '"member_account": "player_001",' },
+  { indent: 1, text: '"game_uid": "GAME_UID",' },
+  { indent: 1, text: '"balance": 500.00,' },
+  { indent: 1, text: '"home_url": "https://your-site.com"' },
   { indent: 0, text: "}" },
 ];
 

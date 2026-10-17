@@ -13,19 +13,19 @@ export function Hero() {
         <Reveal>
           <span className="inline-flex items-center gap-2 rounded-full border border-primary-border bg-primary-soft px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-bright">
             <span className="h-1.5 w-1.5 rounded-full dot-active" />
-            B2B iGaming Technology
+            Powering the Future of iGaming
           </span>
 
           <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            Powering the{" "}
-            <span className="text-gradient-accent">Future of iGaming</span>
+            B2B iGaming platform for{" "}
+            <span className="text-gradient-accent">casino and sportsbook operators</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Octhera provides scalable infrastructure for operators to launch
-            and grow casino and sportsbook businesses through one technology
-            ecosystem — aggregation, platform, payments and back office,
-            unified behind a single API.
+            Octhera supplies licensed operators with casino game aggregation
+            through one API, a sportsbook for pre-match and live betting, and
+            white label or turnkey platforms with payments and back office.
+            Plans and pricing are published.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
