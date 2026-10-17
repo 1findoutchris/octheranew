@@ -106,7 +106,7 @@ export function IntegrationGuide() {
           <code className="font-mono text-sm">transfer_id</code> for each launch; your{" "}
           <code className="font-mono text-sm">member_account</code> stays your own player ID.
         </p>
-        <p className="font-mono text-base text-foreground">
+        <p className="font-mono text-base break-all text-foreground">
           POST https://api.octhera.com/v1/games/launch
         </p>
         <CodeBlock code={snippets.launchRequest} label="Launch request body" language="JSON" />

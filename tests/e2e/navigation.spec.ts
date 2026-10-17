@@ -96,10 +96,21 @@ test.describe("desktop dropdowns", () => {
   });
 });
 
-test("no document-wide horizontal overflow", async ({ page }) => {
-  for (const path of ["/", "/products/sportsbook", "/providers", "/pricing", "/docs", "/contact"]) {
-    await page.goto(path);
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-    expect(overflow, path).toBeLessThanOrEqual(0);
+test("no document-wide horizontal overflow at 390, 768 and 1440", async ({ browser, request, viewport }) => {
+  test.skip((viewport?.width ?? 0) < 1024, "runs once; creates its own contexts");
+  const xml = await (await request.get("/sitemap.xml")).text();
+  const paths = [...xml.matchAll(/<loc>https:\/\/octhera\.org(.*?)<\/loc>/g)].map((m) => m[1] || "/");
+  paths.push("/providers/evolution", "/contact?request=walkthrough&product=sportsbook");
+  for (const width of [390, 768, 1440]) {
+    // A plain (non-mobile-emulated) context: mobile emulation can widen the
+    // layout viewport and hide overflow.
+    const context = await browser.newContext({ viewport: { width, height: 900 } });
+    const page = await context.newPage();
+    for (const path of paths) {
+      await page.goto(path);
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      expect(overflow, `${width}px ${path}`).toBeLessThanOrEqual(0);
+    }
+    await context.close();
   }
 });

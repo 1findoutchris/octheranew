@@ -35,7 +35,8 @@ export function ProviderCatalog({ providers }: { providers: Provider[] }) {
 
   return (
     <div>
-      <div className="flex flex-col gap-4">
+      <h2 className="type-h3 text-foreground">Browse the directory</h2>
+      <div className="mt-4 flex flex-col gap-4">
         <div className="w-full sm:max-w-sm">
           <label htmlFor="provider-search" className="block text-sm font-medium text-foreground">
             Search the directory
