@@ -1,5 +1,4 @@
 import { cn } from "@/lib/cn";
-import { Reveal } from "@/components/ui/Reveal";
 
 export function SectionHeading({
   eyebrow,
@@ -7,35 +6,31 @@ export function SectionHeading({
   description,
   align = "left",
   className,
+  id,
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   description?: React.ReactNode;
   align?: "left" | "center";
   className?: string;
+  /** id for the H2, so sections can be labelled with aria-labelledby. */
+  id?: string;
 }) {
   return (
-    <Reveal
-      className={cn(
-        "max-w-2xl",
-        align === "center" && "mx-auto text-center",
-        className
-      )}
-    >
+    <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
       {eyebrow && (
-        <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary-bright">
-          <span className="h-1.5 w-1.5 rounded-full dot-active" />
+        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary-bright">
           {eyebrow}
-        </span>
+        </p>
       )}
-      <h2 className="mt-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]">
+      <h2 id={id} className={cn("type-h2", eyebrow && "mt-3", align === "center" && "mx-auto")}>
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">
+        <p className={cn("type-lead mt-4 text-muted", align === "center" && "mx-auto")}>
           {description}
         </p>
       )}
-    </Reveal>
+    </div>
   );
 }

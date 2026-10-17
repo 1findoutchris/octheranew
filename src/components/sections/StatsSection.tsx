@@ -32,8 +32,8 @@ export function StatsSection() {
     <section className="relative border-y border-border bg-surface py-14">
       <Container>
         <dl className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-          {stats.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 80} className="flex flex-col-reverse text-center sm:text-left">
+          {stats.map((stat) => (
+            <Reveal key={stat.label} className="flex flex-col-reverse text-center sm:text-left">
               <dt className="mt-1 block text-sm text-muted">{stat.label}</dt>
               <dd>
                 <AnimatedStat

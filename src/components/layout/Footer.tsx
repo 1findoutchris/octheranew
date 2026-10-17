@@ -1,48 +1,47 @@
 import Link from "next/link";
 import { footerNav, siteConfig } from "@/data/site";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { OctheraLogo } from "@/components/ui/OctheraLogo";
 
+/**
+ * Company identity and legal links are deliberately absent until the owner
+ * supplies verified details (docs/owner-decisions.md §1); /privacy and
+ * /terms do not exist yet, so nothing links to them.
+ */
 export function Footer() {
   return (
-    <footer className="relative border-t border-border bg-surface">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-border to-transparent" />
-      <Container className="py-16 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
+    <footer id="site-footer" className="border-t border-border bg-surface">
+      <Container className="section-y">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_2fr]">
           <div className="max-w-sm">
             <OctheraLogo href="/" size="md" />
             <p className="mt-4 text-sm leading-relaxed text-muted">
-              Powering the Future of Gaming. Octhera provides B2B casino
-              aggregation, sportsbook, turnkey and white-label infrastructure
-              for operators building the next generation of gaming brands.
+              B2B casino aggregation, sportsbook, white-label and turnkey technology for licensed
+              operators.
             </p>
-            <div className="mt-6">
-              <Button href="/contact" size="md" showArrow>
-                Talk to Sales
-              </Button>
-            </div>
-            <p className="mt-4 text-sm text-muted">
-              <a
-                href={`mailto:${siteConfig.salesEmail}`}
-                className="font-medium text-foreground hover:text-primary-bright"
-              >
-                {siteConfig.salesEmail}
-              </a>
-            </p>
+            <h2 className="mt-6 text-sm font-semibold text-foreground">Contact sales</h2>
+            <ul className="mt-2 space-y-2 text-sm">
+              <li>
+                <a href={`mailto:${siteConfig.salesEmail}`} className="link-inline">
+                  {siteConfig.salesEmail}
+                </a>
+              </li>
+              <li>
+                <a href={siteConfig.telegram} target="_blank" rel="noopener noreferrer" className="link-inline">
+                  Message our team on Telegram
+                </a>
+              </li>
+            </ul>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {footerNav.map((group) => (
               <div key={group.title}>
-                <h3 className="text-sm font-semibold text-foreground">{group.title}</h3>
+                <h2 className="text-sm font-semibold text-foreground">{group.title}</h2>
                 <ul className="mt-4 space-y-3">
                   {group.links.map((link) => (
                     <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="text-sm text-muted transition-colors hover:text-primary-bright"
-                      >
+                      <Link href={link.href} className="text-sm text-muted transition-colors hover:text-foreground hover:underline">
                         {link.label}
                       </Link>
                     </li>
@@ -50,19 +49,18 @@ export function Footer() {
                 </ul>
               </div>
             ))}
-          </div>
+          </nav>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-border pt-8 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-8 text-sm text-muted sm:flex-row sm:items-start sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.legalName}
           </p>
           <p className="max-w-xl leading-relaxed">
-            Octhera provides business-to-business gaming technology to
-            licensed operators. Octhera does not offer gambling services
-            directly to consumers. Operators are responsible for holding
-            applicable licenses and complying with local regulations,
-            including responsible-gambling requirements, in their markets.
+            Octhera provides business-to-business gaming technology to licensed operators and does
+            not offer gambling services to consumers. Operators are responsible for holding
+            applicable licences and complying with local regulations, including responsible-gambling
+            requirements, in their markets.
           </p>
         </div>
       </Container>

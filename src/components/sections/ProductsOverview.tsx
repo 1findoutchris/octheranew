@@ -22,8 +22,8 @@ export function ProductsOverview() {
         </div>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((product, i) => (
-            <ProductCard key={product.slug} product={product} delay={i * 60} />
+          {featured.map((product) => (
+            <ProductCard key={product.slug} product={product} />
           ))}
         </div>
       </Container>

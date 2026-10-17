@@ -146,8 +146,8 @@ export default function GameAggregationPage() {
             What to check when choosing a game aggregator
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {checklist.map((item, i) => (
-              <Reveal key={item.title} delay={i * 60} className="card-surface rounded-2xl p-6">
+            {checklist.map((item) => (
+              <Reveal key={item.title} className="card-surface rounded-2xl p-6">
                 <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
               </Reveal>

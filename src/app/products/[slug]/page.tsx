@@ -231,7 +231,7 @@ function ProductSummarySections({ product }: { product: Product }) {
             </div>
           </Reveal>
 
-          <Reveal delay={100} className="card-surface h-fit rounded-2xl p-6">
+          <Reveal className="card-surface h-fit rounded-2xl p-6">
             <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-primary-bright">
               Best For
             </h3>

@@ -99,7 +99,7 @@ export default async function ProviderDetailPage({
               </div>
             </Reveal>
 
-            <Reveal delay={100} className="card-surface h-fit rounded-2xl p-6">
+            <Reveal className="card-surface h-fit rounded-2xl p-6">
               <dl className="space-y-5">
                 <div className="flex items-center justify-between border-b border-border pb-5">
                   <dt className="text-xs uppercase tracking-wide text-muted">Game Count</dt>

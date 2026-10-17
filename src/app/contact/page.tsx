@@ -58,7 +58,7 @@ export default function ContactPage() {
             </ul>
           </Reveal>
 
-          <Reveal delay={120} className="relative px-6 py-8 text-center sm:px-0">
+          <Reveal className="relative px-6 py-8 text-center sm:px-0">
             <div className="animate-pulse-glow absolute left-1/2 top-0 h-48 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/25 blur-3xl" />
             <div className="relative">
               <div className="mx-auto flex size-20 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-amber text-white shadow-[0_8px_28px_-8px_var(--color-primary-glow)]">

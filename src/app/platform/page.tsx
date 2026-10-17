@@ -49,7 +49,7 @@ export default function PlatformPage() {
                 description="Player accounts, wallets, risk, bonuses and reporting — managed from a single operational surface, built for teams running live operations."
               />
             </Reveal>
-            <Reveal delay={120}>
+            <Reveal>
               <PlatformVisual />
             </Reveal>
           </div>
@@ -66,8 +66,8 @@ export default function PlatformPage() {
           />
 
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((capability, i) => (
-              <Reveal key={capability.title} delay={i * 50} className="card-surface rounded-2xl p-6">
+            {capabilities.map((capability) => (
+              <Reveal key={capability.title} className="card-surface rounded-2xl p-6">
                 <div className="flex size-11 items-center justify-center rounded-xl bg-primary-soft text-primary-bright">
                   <Icon name={capability.icon} className="size-5" />
                 </div>

@@ -44,8 +44,8 @@ export default function PricingPage() {
       <section className="pb-20 lg:pb-24">
         <Container>
           <div className="grid gap-5 lg:grid-cols-4">
-            {pricingPlans.map((plan, i) => (
-              <PricingCard key={plan.slug} plan={plan} delay={i * 70} />
+            {pricingPlans.map((plan) => (
+              <PricingCard key={plan.slug} plan={plan} />
             ))}
           </div>
 

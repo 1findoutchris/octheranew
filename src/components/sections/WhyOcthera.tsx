@@ -24,10 +24,9 @@ export function WhyOcthera() {
         />
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {reasons.map((reason, i) => (
+          {reasons.map((reason) => (
             <Reveal
               key={reason.title}
-              delay={i * 70}
               className="card-surface rounded-2xl p-6"
             >
               <div className="flex size-11 items-center justify-center rounded-xl bg-primary-soft text-primary-bright">

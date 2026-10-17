@@ -36,10 +36,9 @@ export function TechnologySection() {
             />
 
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              {technologies.map((tech, i) => (
+              {technologies.map((tech) => (
                 <Reveal
                   key={tech.title}
-                  delay={i * 60}
                   className="flex items-start gap-3 rounded-xl border border-border bg-elevated/60 p-4"
                 >
                   <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary-bright">
@@ -54,7 +53,7 @@ export function TechnologySection() {
             </div>
           </div>
 
-          <Reveal delay={120}>
+          <Reveal>
             <div className="card-surface glow-primary rounded-2xl p-1.5">
               <div className="flex items-center gap-1.5 px-4 py-3">
                 <span className="size-2.5 rounded-full bg-border-strong" />

@@ -5,11 +5,10 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { cn } from "@/lib/cn";
 
-export function PricingCard({ plan, delay = 0 }: { plan: PricingPlan; delay?: number }) {
+export function PricingCard({ plan }: { plan: PricingPlan }) {
   return (
     <Reveal
       id={plan.slug}
-      delay={delay}
       className={cn(
         "scroll-mt-28",
         "card-surface relative flex flex-col rounded-2xl p-6",

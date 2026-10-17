@@ -76,8 +76,8 @@ export default function AboutPage() {
       <section className="pb-24 lg:pb-32">
         <Container>
           <div className="grid gap-5 sm:grid-cols-2">
-            {pillars.map((pillar, i) => (
-              <Reveal key={pillar.title} delay={i * 70} className="card-surface rounded-2xl p-7">
+            {pillars.map((pillar) => (
+              <Reveal key={pillar.title} className="card-surface rounded-2xl p-7">
                 <div className="flex size-12 items-center justify-center rounded-xl bg-primary-soft text-primary-bright">
                   <Icon name={pillar.icon} className="size-6" />
                 </div>
@@ -105,7 +105,7 @@ export default function AboutPage() {
                 ))}
               </ul>
             </Reveal>
-            <Reveal delay={100}>
+            <Reveal>
               <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">How we work with operators</h2>
               <ul className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
                 <li>

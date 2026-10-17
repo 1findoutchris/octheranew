@@ -44,8 +44,8 @@ export function HowItWorks() {
           <div className="absolute left-[27px] top-2 bottom-2 hidden w-px bg-gradient-to-b from-primary via-border to-transparent sm:block lg:left-0 lg:right-0 lg:top-7 lg:h-px lg:w-auto lg:bg-gradient-to-r" />
 
           <div className="grid gap-8 sm:gap-10 lg:grid-cols-5 lg:gap-6">
-            {steps.map((step, i) => (
-              <Reveal key={step.number} delay={i * 90} className="relative flex gap-5 lg:flex-col lg:gap-0">
+            {steps.map((step) => (
+              <Reveal key={step.number} className="relative flex gap-5 lg:flex-col lg:gap-0">
                 <div className="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-2xl border border-primary-border bg-elevated font-mono text-sm font-semibold text-primary-bright shadow-[0_0_0_6px_var(--color-bg)] lg:size-[52px]">
                   {step.number}
                 </div>

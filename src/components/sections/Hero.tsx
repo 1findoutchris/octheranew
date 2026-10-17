@@ -38,7 +38,7 @@ export function Hero() {
           </div>
         </Reveal>
 
-        <Reveal delay={150}>
+        <Reveal>
           <HeroVisual />
         </Reveal>
       </Container>

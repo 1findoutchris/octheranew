@@ -13,7 +13,7 @@ export function AggregationDiagram() {
   return (
     <div className="relative mx-auto max-w-lg">
       {layers.map((layer, i) => (
-        <Reveal key={layer.title} delay={i * 90} className="relative">
+        <Reveal key={layer.title} className="relative">
           <div className="card-surface card-glow flex items-center gap-4 rounded-2xl p-5">
             <div
               className={

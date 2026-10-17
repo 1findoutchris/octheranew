@@ -1,5 +1,6 @@
 import { cn } from "@/lib/cn";
 
+/** Max 1200px content width; 20px side padding on mobile, 24px from tablet up. */
 export function Container({
   className,
   children,
@@ -8,7 +9,7 @@ export function Container({
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn("mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10", className)}>
+    <div className={cn("mx-auto w-full max-w-[1248px] px-5 md:px-6", className)}>
       {children}
     </div>
   );

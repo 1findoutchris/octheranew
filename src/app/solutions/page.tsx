@@ -27,10 +27,9 @@ export default function SolutionsPage() {
       <section className="pb-24 lg:pb-32">
         <Container>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {solutions.map((solution, i) => (
+            {solutions.map((solution) => (
               <Reveal
                 key={solution.slug}
-                delay={i * 60}
                 id={solution.slug}
                 as="div"
                 className="card-surface scroll-mt-28 flex flex-col rounded-2xl p-6"

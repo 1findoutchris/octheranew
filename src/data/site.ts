@@ -8,25 +8,58 @@ export const siteConfig = {
   legalName: "Octhera",
   tagline: "Powering the Future of iGaming",
   description:
-    "Octhera is a B2B iGaming technology platform providing casino aggregation, sportsbook, turnkey and white-label infrastructure for operators worldwide.",
+    "Octhera is a B2B iGaming technology supplier providing casino game aggregation, sportsbook, white-label and turnkey platforms to licensed operators.",
   /** Canonical origin. The only custom domain attached to the Railway service. */
   url: "https://octhera.org",
   telegram: "https://t.me/Noah_Octhera",
   salesEmail: "sales@octhera.org",
 };
 
-export const mainNav: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "Game Aggregation", href: "/game-aggregation" },
-  { label: "Providers", href: "/providers" },
-  { label: "Platform", href: "/platform" },
-  { label: "Solutions", href: "/solutions" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Docs", href: "/docs" },
-  { label: "About", href: "/about" },
-];
+/** A top-level header entry: a direct link, or a group opened as a dropdown. */
+export type NavGroup =
+  | { label: string; href: string; links?: undefined }
+  | { label: string; href?: undefined; links: (NavItem & { description?: string })[] };
 
+export const navGroups: NavGroup[] = [
+  {
+    label: "Products",
+    links: [
+      { label: "All products", href: "/products", description: "Compare routes and modules" },
+      { label: "Casino Aggregator", href: "/products/casino-aggregator", description: "Multi-studio casino content" },
+      { label: "Sportsbook", href: "/products/sportsbook", description: "Pre-match and live betting" },
+      { label: "White Label", href: "/products/white-label", description: "Ready-made branded platform" },
+      { label: "Turnkey", href: "/products/turnkey-casino", description: "Casino and sportsbook stack" },
+      { label: "Back Office", href: "/products/back-office", description: "Operational tooling" },
+      { label: "Platform overview", href: "/platform", description: "Operator platform layer" },
+      { label: "Provider directory", href: "/providers", description: "Studios listed in our directory" },
+    ],
+  },
+  {
+    label: "Solutions",
+    links: [
+      { label: "All solutions", href: "/solutions" },
+      { label: "Existing operators", href: "/solutions#existing-operators" },
+      { label: "New brands and startups", href: "/solutions#startups" },
+      { label: "Sportsbook operators", href: "/solutions#sportsbook-operators" },
+      { label: "How game aggregation works", href: "/game-aggregation" },
+    ],
+  },
+  { label: "Pricing", href: "/pricing" },
+  {
+    label: "Developers",
+    links: [
+      { label: "Integration guide", href: "/docs", description: "Game launch and wallet callback" },
+      { label: "Casino API overview", href: "/products/casino-api", description: "Scope, prerequisites and onboarding" },
+    ],
+  },
+  {
+    label: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Contact sales", href: "/contact" },
+    ],
+  },
+];
 
 export type FooterLinkGroup = {
   title: string;
@@ -39,37 +72,35 @@ export const footerNav: FooterLinkGroup[] = [
     links: [
       { label: "Casino Aggregator", href: "/products/casino-aggregator" },
       { label: "Sportsbook", href: "/products/sportsbook" },
-      { label: "Turnkey Casino", href: "/products/turnkey-casino" },
       { label: "White Label", href: "/products/white-label" },
-      { label: "Casino API", href: "/products/casino-api" },
+      { label: "Turnkey", href: "/products/turnkey-casino" },
+      { label: "Back Office", href: "/products/back-office" },
+      { label: "All products", href: "/products" },
     ],
   },
   {
     title: "Solutions",
     links: [
-      { label: "Startups", href: "/solutions#startups" },
-      { label: "Existing Operators", href: "/solutions#existing-operators" },
-      { label: "Casino Brands", href: "/solutions#casino-brands" },
-      { label: "Sportsbook Operators", href: "/solutions#sportsbook-operators" },
-      { label: "Affiliates", href: "/solutions#affiliates" },
+      { label: "Existing operators", href: "/solutions#existing-operators" },
+      { label: "New brands", href: "/solutions#startups" },
+      { label: "Sportsbook operators", href: "/solutions#sportsbook-operators" },
+      { label: "How aggregation works", href: "/game-aggregation" },
+      { label: "Provider directory", href: "/providers" },
+    ],
+  },
+  {
+    title: "Developers",
+    links: [
+      { label: "Integration guide", href: "/docs" },
+      { label: "Casino API overview", href: "/products/casino-api" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Platform", href: "/platform" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Documentation", href: "/docs" },
-      { label: "How Aggregation Works", href: "/game-aggregation" },
-      { label: "Providers", href: "/providers" },
-      { label: "Talk to Sales", href: "/contact" },
+      { label: "Contact sales", href: "/contact" },
     ],
   },
 ];

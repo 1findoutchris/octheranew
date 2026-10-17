@@ -1,33 +1,29 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 
+/** Charcoal page hero: eyebrow, H1 (56/44/34) and lead paragraph. */
 export function PageHeader({
   eyebrow,
   title,
   description,
+  children,
 }: {
   eyebrow: string;
   title: React.ReactNode;
   description?: React.ReactNode;
+  /** Optional actions or breadcrumbs rendered under the lead. */
+  children?: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden pt-40 pb-20 lg:pt-48 lg:pb-24">
-      <div className="absolute inset-0 bg-grid opacity-[0.35] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)]" />
-      <div className="absolute inset-0 bg-radial-fade" />
-      <Container className="relative">
+    <section className="border-b border-border bg-background section-y">
+      <Container>
         <Reveal className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary-bright">
-            <span className="h-1.5 w-1.5 rounded-full dot-active" />
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary-bright">
             {eyebrow}
-          </span>
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            {title}
-          </h1>
-          {description && (
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              {description}
-            </p>
-          )}
+          </p>
+          <h1 className="type-h1 mt-4">{title}</h1>
+          {description && <p className="type-lead mt-6 text-muted">{description}</p>}
+          {children}
         </Reveal>
       </Container>
     </section>

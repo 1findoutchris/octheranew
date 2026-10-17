@@ -3,9 +3,9 @@ import type { Product } from "@/data/products";
 import { Icon } from "@/components/ui/Icon";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function ProductCard({ product, delay = 0 }: { product: Product; delay?: number }) {
+export function ProductCard({ product }: { product: Product }) {
   return (
-    <Reveal delay={delay}>
+    <Reveal>
       <Link
         href={`/products/${product.slug}`}
         className="card-surface card-glow group flex h-full flex-col rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-7"
