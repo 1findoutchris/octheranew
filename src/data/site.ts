@@ -12,6 +12,7 @@ export const siteConfig = {
   /** Canonical origin. The only custom domain attached to the Railway service. */
   url: "https://octhera.org",
   telegram: "https://t.me/Noah_Octhera",
+  salesEmail: "sales@octhera.org",
 };
 
 export const mainNav: NavItem[] = [

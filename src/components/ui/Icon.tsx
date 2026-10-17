@@ -42,7 +42,8 @@ export type IconName =
   | "grid"
   | "code"
   | "alert-triangle"
-  | "telegram";
+  | "telegram"
+  | "mail";
 
 const paths: Record<IconName, React.ReactNode> = {
   aggregator: (
@@ -306,6 +307,12 @@ const paths: Record<IconName, React.ReactNode> = {
     <>
       <path d="M21.5 2.5 10.3 13.6" />
       <path d="M21.5 2.5 14.6 21.5l-4.3-7.9-8-4.1 19.2-6.9Z" />
+    </>
+  ),
+  mail: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3.5 6.5 8.5 6.5 8.5-6.5" />
     </>
   ),
 };
