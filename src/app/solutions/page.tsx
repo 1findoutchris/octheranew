@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { solutions } from "@/data/solutions";
 import { products } from "@/data/products";
 import { Container } from "@/components/ui/Container";
@@ -7,11 +8,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { CTASection } from "@/components/sections/CTASection";
 
-export const metadata: Metadata = {
-  title: "Solutions",
+export const metadata: Metadata = pageMetadata({
+  title: "iGaming Solutions by Operator Type",
   description:
-    "Octhera solutions for startups, existing operators, casino brands, sportsbook operators, affiliates, media companies and land-based operators.",
-};
+    "Which Octhera products fit startups, existing operators, casino brands, sportsbook operators, affiliates, media companies and land-based operators.",
+  path: "/solutions",
+});
 
 export default function SolutionsPage() {
   return (

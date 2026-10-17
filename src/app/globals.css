@@ -220,11 +220,9 @@ body {
     box-shadow: 0 0 12px 2px var(--color-primary-glow);
   }
 
+  /* Pure CSS entrance: content is in the server HTML and becomes visible
+     without waiting for hydration (or with JavaScript disabled). */
   .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  .reveal.is-visible {
     animation: var(--animate-fade-in-up);
   }
 
@@ -375,7 +373,6 @@ body {
     scroll-behavior: auto !important;
   }
   .reveal {
-    opacity: 1;
-    transform: none;
+    animation: none;
   }
 }

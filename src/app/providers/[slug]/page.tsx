@@ -6,11 +6,17 @@ import {
   getProviderBySlug,
   getRelatedProviders,
   availabilityLabels,
+  isProviderIndexable,
 } from "@/data/providers";
+import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { directoryScope } from "@/data/catalog";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { ProviderCard } from "@/components/providers/ProviderCard";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return providers.map((provider) => ({ slug: provider.slug }));
@@ -24,10 +30,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const provider = getProviderBySlug(slug);
   if (!provider) return {};
-  return {
-    title: provider.name,
-    description: `${provider.name} on Octhera — ${provider.categories.join(", ")} content available through the Octhera aggregation ecosystem.`,
-  };
+  return pageMetadata({
+    title: `${provider.name} Games via Octhera`,
+    description: `${provider.name} (${provider.categories.join(", ")}) in the Octhera provider directory. Availability for your markets is confirmed on request.`,
+    path: `/providers/${provider.slug}`,
+    noindex: !isProviderIndexable(provider),
+  });
 }
 
 export default async function ProviderDetailPage({
@@ -48,13 +56,13 @@ export default async function ProviderDetailPage({
         <div className="absolute inset-0 bg-radial-fade" />
         <Container className="relative">
           <Reveal>
-            <nav className="text-sm text-muted">
-              <Link href="/providers" className="hover:text-primary-bright">
-                Providers
-              </Link>
-              <span className="mx-2">/</span>
-              <span className="text-foreground">{provider.name}</span>
-            </nav>
+            <Breadcrumbs
+              crumbs={[
+                { name: "Home", path: "/" },
+                { name: "Providers", path: "/providers" },
+                { name: provider.name, path: `/providers/${provider.slug}` },
+              ]}
+            />
 
             <div className="mt-6 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
               <div className="flex size-16 items-center justify-center rounded-2xl border border-border bg-elevated font-mono text-lg font-semibold uppercase text-primary-bright">
@@ -99,23 +107,24 @@ export default async function ProviderDetailPage({
                     {provider.gameCount ?? "—"}
                   </dd>
                 </div>
-                <div className="flex items-center justify-between border-b border-border pb-5">
+                <div className="flex items-center justify-between">
                   <dt className="text-xs uppercase tracking-wide text-muted">Availability</dt>
                   <dd className="rounded-full border border-primary-border bg-primary-soft px-3 py-1 text-xs font-medium text-primary-bright">
                     {availabilityLabels[provider.availability]}
                   </dd>
                 </div>
-                <div className="flex items-center justify-between">
-                  <dt className="text-xs uppercase tracking-wide text-muted">Integration Status</dt>
-                  <dd className="text-sm font-medium text-foreground">
-                    {availabilityLabels[provider.availability]}
-                  </dd>
-                </div>
               </dl>
+              <p className="mt-5 text-xs leading-relaxed text-muted">{directoryScope}</p>
 
               <Button href="/contact" size="md" className="mt-6 w-full">
                 Request Provider Access
               </Button>
+              <Link
+                href="/products/casino-aggregator"
+                className="mt-4 block text-center text-xs font-medium text-primary-bright hover:underline"
+              >
+                How the casino aggregator works
+              </Link>
             </Reveal>
           </div>
         </Container>

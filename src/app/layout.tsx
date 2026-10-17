@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/data/site";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,18 +23,8 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: [
-    "iGaming platform",
-    "casino aggregation",
-    "sportsbook technology",
-    "white label casino",
-    "turnkey casino platform",
-    "game aggregation API",
-    "B2B iGaming",
-  ],
   openGraph: {
     type: "website",
-    url: siteConfig.url,
     siteName: siteConfig.name,
     title: "Octhera | B2B iGaming Platform & Game Aggregation",
     description: siteConfig.description,
@@ -42,10 +33,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Octhera | B2B iGaming Platform & Game Aggregation",
     description: siteConfig.description,
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
 };
 
@@ -56,16 +43,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: siteConfig.name,
-              url: siteConfig.url,
-              description: siteConfig.description,
-            }),
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": `${siteConfig.url}/#organization`,
+            name: siteConfig.name,
+            url: siteConfig.url,
+            logo: `${siteConfig.url}/apple-icon`,
+            description: siteConfig.description,
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "sales",
+              url: siteConfig.telegram,
+            },
           }}
         />
         <Navbar />

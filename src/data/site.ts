@@ -9,7 +9,8 @@ export const siteConfig = {
   tagline: "Powering the Future of iGaming",
   description:
     "Octhera is a B2B iGaming technology platform providing casino aggregation, sportsbook, turnkey and white-label infrastructure for operators worldwide.",
-  url: "https://www.octhera.com",
+  /** Canonical origin. The only custom domain attached to the Railway service. */
+  url: "https://octhera.org",
   telegram: "https://t.me/Noah_Octhera",
 };
 
@@ -25,21 +26,6 @@ export const mainNav: NavItem[] = [
   { label: "About", href: "/about" },
 ];
 
-export type HomeStat = {
-  value: string;
-  label: string;
-};
-
-/**
- * Editable marketing content — not independently verified business claims.
- * Update these values as real figures become available.
- */
-export const homeStats: HomeStat[] = [
-  { value: "200+", label: "Game Providers" },
-  { value: "15,000+", label: "Games" },
-  { value: "Single API", label: "Integration" },
-  { value: "24/7", label: "Technical Support" },
-];
 
 export type FooterLinkGroup = {
   title: string;
@@ -80,7 +66,7 @@ export const footerNav: FooterLinkGroup[] = [
     title: "Resources",
     links: [
       { label: "Documentation", href: "/docs" },
-      { label: "Game Aggregation", href: "/game-aggregation" },
+      { label: "How Aggregation Works", href: "/game-aggregation" },
       { label: "Providers", href: "/providers" },
       { label: "Talk to Sales", href: "/contact" },
     ],

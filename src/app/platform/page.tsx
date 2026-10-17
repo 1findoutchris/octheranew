@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,11 +8,12 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 import { PlatformVisual } from "@/components/sections/PlatformVisual";
 import { CTASection } from "@/components/sections/CTASection";
 
-export const metadata: Metadata = {
-  title: "Platform",
+export const metadata: Metadata = pageMetadata({
+  title: "iGaming Platform & Operator Back Office",
   description:
-    "The Octhera platform is the technology layer underneath your operation — player management, wallet, risk, bonuses, CRM, affiliates, reporting and more.",
-};
+    "The Octhera platform layer: player and wallet management, game controls, risk, bonuses, CRM, affiliates, reporting and role-based access for operator teams.",
+  path: "/platform",
+});
 
 const capabilities: { icon: IconName; title: string; description: string }[] = [
   { icon: "users", title: "Player Management", description: "Player accounts, KYC status and lifecycle in one place." },

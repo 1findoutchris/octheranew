@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { products } from "@/data/products";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ProductCard } from "@/components/sections/ProductCard";
 import { CTASection } from "@/components/sections/CTASection";
 
-export const metadata: Metadata = {
-  title: "Products",
+export const metadata: Metadata = pageMetadata({
+  title: "B2B iGaming Products for Casino & Sportsbook Operators",
   description:
-    "Explore Octhera's B2B iGaming products: casino aggregation, sportsbook, turnkey casino, white label, casino API, back office, payments and affiliate systems.",
-};
+    "Octhera's B2B iGaming products: casino aggregator, casino API, sportsbook, turnkey, white label, back office, payments and affiliate system. Compare what each one is for.",
+  path: "/products",
+});
 
 export default function ProductsPage() {
   return (

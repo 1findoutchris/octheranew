@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { CTASection } from "@/components/sections/CTASection";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = pageMetadata({
+  title: "About Us: B2B iGaming Technology Supplier",
   description:
-    "Octhera is a technology company building infrastructure for the next generation of iGaming businesses — casino aggregation, sportsbook and platform technology.",
-};
+    "Octhera is a B2B iGaming technology supplier of casino aggregation, sportsbook, white label and turnkey platforms to licensed operators. No consumer gambling.",
+  path: "/about",
+});
 
 const pillars: { icon: IconName; title: string; description: string }[] = [
   {
@@ -35,6 +38,29 @@ const pillars: { icon: IconName; title: string; description: string }[] = [
     title: "Global Ambition",
     description:
       "We're building Octhera to support operators across markets, with infrastructure designed to scale as those markets grow.",
+  },
+];
+
+const supplies: { label: string; href: string; description: string }[] = [
+  {
+    label: "Casino aggregator",
+    href: "/products/casino-aggregator",
+    description: "multi-studio game content through one integration and a seamless wallet model.",
+  },
+  {
+    label: "Casino API",
+    href: "/products/casino-api",
+    description: "the game launch and signed wallet callback interface for operators with their own platform.",
+  },
+  {
+    label: "Sportsbook",
+    href: "/products/sportsbook",
+    description: "pre-match and live betting with configurable odds, margins and risk tooling.",
+  },
+  {
+    label: "White label and turnkey platforms",
+    href: "/products/turnkey-casino",
+    description: "a complete operator platform with back office, payments and affiliate tools.",
   },
 ];
 
@@ -65,18 +91,55 @@ export default function AboutPage() {
 
       <section className="border-t border-border bg-surface py-24 lg:py-32">
         <Container>
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              Built by people who understand operations
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-muted">
-              Octhera is built by a team focused on the practical realities of
-              running an iGaming business — integration timelines, operational
-              controls and the day-to-day needs of operators. Licensing and
-              regulatory compliance remain the responsibility of each
-              operator in their respective markets.
-            </p>
-          </Reveal>
+          <div className="grid gap-12 lg:grid-cols-2">
+            <Reveal>
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">What Octhera supplies</h2>
+              <ul className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
+                {supplies.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="font-medium text-primary-bright hover:underline">
+                      {item.label}
+                    </Link>
+                    : {item.description}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <Reveal delay={100}>
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">How we work with operators</h2>
+              <ul className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
+                <li>
+                  Octhera is a business-to-business supplier. We do not offer gambling services to
+                  consumers.
+                </li>
+                <li>
+                  Operators hold the licences for their markets and are responsible for regulatory
+                  compliance, including responsible-gambling requirements.
+                </li>
+                <li>
+                  Plan prices and GGR share are published on our{" "}
+                  <Link href="/pricing" className="font-medium text-primary-bright hover:underline">
+                    pricing page
+                  </Link>
+                  .
+                </li>
+                <li>
+                  The integration is documented publicly in our{" "}
+                  <Link href="/docs" className="font-medium text-primary-bright hover:underline">
+                    developer documentation
+                  </Link>
+                  , and sandbox credentials are issued before go-live.
+                </li>
+                <li>
+                  You can reach the team directly on Telegram from our{" "}
+                  <Link href="/contact" className="font-medium text-primary-bright hover:underline">
+                    contact page
+                  </Link>
+                  .
+                </li>
+              </ul>
+            </Reveal>
+          </div>
         </Container>
       </section>
 

@@ -38,7 +38,7 @@ export const pricingPlans: PricingPlan[] = [
       "Reporting and reconciliation tooling",
       "Onboarding and integration support",
     ],
-    cta: "Request Pricing",
+    cta: "Talk to Sales",
   },
   {
     slug: "white-label",
@@ -55,7 +55,7 @@ export const pricingPlans: PricingPlan[] = [
       "Payments and back office included",
       "Faster time to market",
     ],
-    cta: "Request Pricing",
+    cta: "Talk to Sales",
     highlighted: true,
   },
   {
@@ -72,7 +72,7 @@ export const pricingPlans: PricingPlan[] = [
       "Dedicated onboarding",
       "Ongoing platform updates",
     ],
-    cta: "Request Pricing",
+    cta: "Talk to Sales",
   },
   {
     slug: "enterprise",
