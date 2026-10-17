@@ -66,3 +66,10 @@ test("illustrations are labelled and no live or performance claims remain", asyn
     expect(text).not.toMatch(/^Live$/m);
   }
 });
+
+test("inquiry form and API are off unless fully configured", async ({ page, request }) => {
+  await page.goto("/contact");
+  await expect(page.getByRole("button", { name: "Send request" })).toHaveCount(0);
+  const res = await request.post("/api/inquiries", { data: {}, headers: { Origin: "https://octhera.org" } });
+  expect(res.status()).toBe(404);
+});

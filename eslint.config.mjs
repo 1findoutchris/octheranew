@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Isolated build used by the inquiry-form E2E suite, and test output.
+    ".next-form-test/**",
+    "test-results/**",
+    "playwright-report/**",
   ]),
 ]);
 
