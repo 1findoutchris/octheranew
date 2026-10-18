@@ -24,60 +24,96 @@ export function ProviderCatalog({ providers }: { providers: Provider[] }) {
     });
   }, [providers, query, filter]);
 
+  const filtered = query.trim().length > 0 || filter !== "All";
+  const reset = () => {
+    setQuery("");
+    setFilter("All");
+  };
+  const summary = `${results.length} ${results.length === 1 ? "entry" : "entries"}${
+    filter !== "All" ? ` in ${filter}` : ""
+  }${query.trim() ? ` matching “${query.trim()}”` : ""}`;
+
   return (
     <div>
-      <div className="flex flex-col gap-4">
-        <div className="relative w-full sm:max-w-sm">
-          <Icon
-            name="search"
-            className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted"
-          />
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search providers..."
-            aria-label="Search providers"
-            className="h-11 w-full rounded-full border border-border bg-elevated pl-11 pr-4 text-sm text-foreground placeholder:text-muted focus:border-primary-border focus:outline-none"
-          />
+      <h2 className="type-h3 text-foreground">Browse the directory</h2>
+      <div className="mt-4 flex flex-col gap-4">
+        <div className="w-full sm:max-w-sm">
+          <label htmlFor="provider-search" className="block text-sm font-medium text-foreground">
+            Search the directory
+          </label>
+          <div className="relative mt-2">
+            <Icon
+              name="search"
+              className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted"
+            />
+            <input
+              id="provider-search"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              autoComplete="off"
+              className="min-h-11 w-full rounded-xl border border-border-strong bg-elevated pl-11 pr-4 text-base text-foreground"
+            />
+          </div>
         </div>
 
-        <div
-          className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 sm:mx-0 sm:flex-wrap sm:px-0"
-          role="group"
-          aria-label="Filter providers by category"
-        >
-          {filters.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => setFilter(item)}
-              className={cn(
-                "shrink-0 rounded-full border px-4 py-2 text-xs font-medium whitespace-nowrap transition-colors",
-                filter === item
-                  ? "border-primary-border bg-primary-soft text-primary-bright"
-                  : "border-border text-muted hover:border-border-strong hover:text-foreground"
-              )}
-            >
-              {item}
-            </button>
-          ))}
+        <div role="group" aria-labelledby="provider-category-label">
+          <p id="provider-category-label" className="text-sm font-medium text-foreground">
+            Category
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {filters.map((item) => {
+              const active = filter === item;
+              return (
+                <button
+                  key={item}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => setFilter(item)}
+                  className={cn(
+                    "inline-flex min-h-11 items-center gap-1.5 rounded-xl border px-4 text-sm font-medium whitespace-nowrap transition-colors",
+                    active
+                      ? "border-primary-bright bg-primary-soft text-foreground"
+                      : "border-border-strong text-muted hover:text-foreground"
+                  )}
+                >
+                  {active && <Icon name="check" className="size-4" />}
+                  {item}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      <p className="mt-6 text-sm text-muted">
-        {results.length} {results.length === 1 ? "provider" : "providers"}
-      </p>
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        <p role="status" aria-live="polite" className="text-sm text-muted">
+          {summary}
+        </p>
+        {filtered && results.length > 0 && (
+          <button type="button" onClick={reset} className="link-inline min-h-11 text-sm">
+            Reset filters
+          </button>
+        )}
+      </div>
 
       {results.length > 0 ? (
-        <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ul className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {results.map((provider) => (
-            <ProviderCard key={provider.slug} provider={provider} />
+            <li key={provider.slug}>
+              <ProviderCard provider={provider} />
+            </li>
           ))}
-        </div>
+        </ul>
       ) : (
-        <div className="card-surface mt-4 rounded-2xl p-12 text-center">
-          <p className="text-sm text-muted">No providers match your search.</p>
+        <div className="card-surface mt-4 rounded-xl p-8 text-center">
+          <p className="text-base text-foreground">No directory entries match these filters.</p>
+          <p className="mt-1 text-sm text-muted">
+            Try another name or category, or ask us about a studio that isn&apos;t listed.
+          </p>
+          <button type="button" onClick={reset} className="btn-secondary mt-4 inline-flex min-h-11 items-center rounded-xl px-5 text-base font-medium">
+            Reset filters
+          </button>
         </div>
       )}
     </div>

@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ProviderCatalog } from "@/components/providers/ProviderCatalog";
 import { CTASection } from "@/components/sections/CTASection";
-import { directoryProviderCount, directoryScope } from "@/data/catalog";
+import { directoryBrandCount, directoryEntryCount, directoryScope } from "@/data/catalog";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -20,10 +20,10 @@ export default function ProvidersPage() {
       <PageHeader
         eyebrow="Game Providers"
         title="Casino game provider directory"
-        description={`${directoryProviderCount} studios listed, filterable by game category. ${directoryScope}`}
+        description={`${directoryEntryCount} directory entries covering ${directoryBrandCount} brand names (some studios have a separate live-casino entry). ${directoryScope}`}
       />
 
-      <section className="pb-24 lg:pb-32">
+      <section className="theme-light section-y">
         <Container>
           <ProviderCatalog providers={providers} />
         </Container>
@@ -31,8 +31,9 @@ export default function ProvidersPage() {
 
       <CTASection
         title="Looking for a specific provider?"
-        description="Reach out and our team will confirm current availability and integration timelines."
-        primaryLabel="Request Provider Access"
+        description="Tell us your markets and the studios you need, and we'll confirm what is available to you."
+        primaryLabel="Ask about provider access"
+        context={{ request: "provider-access" }}
       />
     </>
   );

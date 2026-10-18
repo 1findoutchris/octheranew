@@ -1,369 +1,199 @@
-import { Icon } from "@/components/ui/Icon";
+import Link from "next/link";
 import { siteConfig } from "@/data/site";
-import { cn } from "@/lib/cn";
+import * as snippets from "@/data/docs-snippets";
+import { CopyButton } from "@/components/docs/CopyButton";
 
-type Token = { t: string; c?: "key" | "str" | "num" | "comment" | "var" };
+/** Last content change to this guide. Update when the documented contract changes. */
+export const guideUpdated = "17 October 2026";
 
-const tone: Record<NonNullable<Token["c"]>, string> = {
-  key: "text-foreground",
-  str: "text-amber",
-  num: "text-primary-bright",
-  var: "text-primary-bright",
-  comment: "text-muted",
-};
-
-function Code({ tokens }: { tokens: Token[] }) {
+function CodeBlock({ code, label, language }: { code: string; label: string; language: string }) {
   return (
-    <pre className="overflow-x-auto rounded-xl border border-border bg-elevated p-4 font-mono text-[13px] leading-relaxed text-foreground/90">
-      <code>
-        {tokens.map((tok, i) =>
-          tok.c ? (
-            <span key={i} className={tone[tok.c]}>
-              {tok.t}
-            </span>
-          ) : (
-            <span key={i}>{tok.t}</span>
-          )
-        )}
-      </code>
-    </pre>
-  );
-}
-
-function WarningBanner({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="mx-auto flex max-w-3xl items-center justify-center gap-2.5 rounded-full border border-amber/30 bg-amber/10 px-5 py-3 text-center text-sm font-medium text-amber">
-      <Icon name="alert-triangle" className="size-4 shrink-0" />
-      {children}
-    </div>
-  );
-}
-
-function StepHeading({
-  number,
-  stepTone,
-  title,
-}: {
-  number: number;
-  stepTone: "primary" | "amber";
-  title: string;
-}) {
-  return (
-    <div>
-      <div className="flex items-center gap-4">
-        <span
-          className={cn(
-            "flex size-9 shrink-0 items-center justify-center rounded-lg text-sm font-bold",
-            stepTone === "primary" ? "bg-primary-soft text-primary-bright" : "bg-amber/10 text-amber"
-          )}
-        >
-          {number}
+    <figure className="overflow-hidden rounded-xl border border-border bg-[#0b1018] text-[#f5f7fa]">
+      <figcaption className="flex items-center justify-between gap-3 border-b border-[#465468] px-4 py-1">
+        <span className="text-sm text-[#b8c2cf]">
+          {label} <span className="font-mono">({language})</span>
         </span>
-        <h3 className="text-xl font-semibold text-foreground">{title}</h3>
-      </div>
-      <div className="mt-4 h-px bg-border" />
+        <span className="[&_button]:border-[#7a889c] [&_button]:text-[#f5f7fa]">
+          <CopyButton text={code} label={label} />
+        </span>
+      </figcaption>
+      <pre tabIndex={0} aria-label={`${label}, scrollable`} className="overflow-x-auto p-4 font-mono text-sm leading-relaxed">
+        <code>{code}</code>
+      </pre>
+    </figure>
+  );
+}
+
+function FieldTable({ caption, rows }: { caption: string; rows: [string, string, string][] }) {
+  return (
+    <div className="overflow-x-auto rounded-xl border border-border" role="region" aria-label={caption} tabIndex={0}>
+      <table className="w-full min-w-[560px] text-left text-base">
+        <caption className="sr-only">{caption}</caption>
+        <thead className="bg-surface text-foreground">
+          <tr>
+            <th scope="col" className="p-3 font-semibold">Field</th>
+            <th scope="col" className="p-3 font-semibold">Type in example</th>
+            <th scope="col" className="p-3 font-semibold">Meaning</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-border bg-elevated text-muted">
+          {rows.map(([field, type, meaning]) => (
+            <tr key={field}>
+              <th scope="row" className="p-3 font-mono text-sm font-medium text-foreground">{field}</th>
+              <td className="p-3 font-mono text-sm">{type}</td>
+              <td className="p-3">{meaning}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-function InfoBox({ title, children }: { title: string; children: React.ReactNode }) {
+function DocSection({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="space-y-2 rounded-xl border border-border bg-elevated/60 p-5 text-sm leading-relaxed text-muted">
-      <p className="font-semibold text-foreground">{title}</p>
+    <section id={id} aria-labelledby={`${id}-heading`} className="scroll-mt-24 space-y-5 border-t border-border pt-10">
+      <h2 id={`${id}-heading`} className="type-h2">
+        {title}
+      </h2>
       {children}
-    </div>
+    </section>
   );
 }
 
-function Label({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted">{children}</p>
-  );
-}
-
-function EndpointBar({ method, path }: { method: string; path: string }) {
-  return (
-    <div className="flex flex-wrap items-center gap-3 rounded-xl border border-border bg-elevated/60 p-4">
-      <span className="rounded-md bg-emerald-400/10 px-2 py-1 text-xs font-semibold text-emerald-400">
-        {method}
-      </span>
-      <span className="font-mono text-sm text-primary-bright">{path}</span>
-    </div>
-  );
-}
-
-const authHeaderTokens: Token[] = [
-  { t: "Content-Type", c: "key" },
-  { t: ": " },
-  { t: "application/json", c: "str" },
-  { t: "\n" },
-  { t: "Authorization", c: "key" },
-  { t: ": " },
-  { t: "Bearer {YOUR_API_KEY}", c: "str" },
+export const guideSections = [
+  { id: "prerequisites", label: "Prerequisites" },
+  { id: "authentication", label: "Authentication" },
+  { id: "launch", label: "Launch a game" },
+  { id: "wallet-callback", label: "Wallet callback" },
+  { id: "signatures", label: "Verify signatures" },
+  { id: "callback-response", label: "Respond to callbacks" },
+  { id: "not-yet-documented", label: "Not yet documented" },
+  { id: "support", label: "Support" },
 ];
 
-const launchRequestTokens: Token[] = [
-  { t: "{\n" },
-  { t: "  " },
-  { t: '"member_account"', c: "key" },
-  { t: ": " },
-  { t: '"player_001"', c: "str" },
-  { t: "," },
-  { t: "       // Your internal player ID", c: "comment" },
-  { t: "\n  " },
-  { t: '"game_uid"', c: "key" },
-  { t: ": " },
-  { t: '"JILI_SLOT_001"', c: "str" },
-  { t: "," },
-  { t: "    // Game identifier", c: "comment" },
-  { t: "\n  " },
-  { t: '"balance"', c: "key" },
-  { t: ": " },
-  { t: "500.00", c: "num" },
-  { t: "," },
-  { t: "             // Initial player balance", c: "comment" },
-  { t: "\n  " },
-  { t: '"home_url"', c: "key" },
-  { t: ": " },
-  { t: '"https://your-site.com"', c: "str" },
-  { t: "  // Redirect after exit", c: "comment" },
-  { t: "\n}" },
-];
-
-const launchResponseTokens: Token[] = [
-  { t: "{\n  " },
-  { t: '"code"', c: "key" },
-  { t: ": " },
-  { t: "0", c: "num" },
-  { t: ",\n  " },
-  { t: '"msg"', c: "key" },
-  { t: ": " },
-  { t: '"Success"', c: "str" },
-  { t: ",\n  " },
-  { t: '"payload"', c: "key" },
-  { t: ": {\n    " },
-  { t: '"game_launch_url"', c: "key" },
-  { t: ": " },
-  { t: '"https://api.octhera.com/play?token=SESSION_CODE_XYZ..."', c: "str" },
-  { t: "\n  }\n}" },
-];
-
-const signatureVerificationTokens: Token[] = [
-  { t: "const crypto = require(" },
-  { t: "'crypto'", c: "str" },
-  { t: ");\n\n" },
-  { t: "// 1. Get Payload & Header", c: "comment" },
-  { t: "\nconst payload", c: "var" },
-  { t: " = req.rawBody;\nconst signature", c: "var" },
-  { t: " = req.headers[" },
-  { t: "'x-signature'", c: "str" },
-  { t: "];\nconst secret", c: "var" },
-  { t: " = " },
-  { t: "'{YOUR_SECRET_KEY}'", c: "str" },
-  { t: ";\n\n" },
-  { t: "// 2. Calculate Expected Signature", c: "comment" },
-  { t: "\nconst expected", c: "var" },
-  { t: " = crypto\n  .createHmac(" },
-  { t: "'sha256'", c: "str" },
-  { t: ", " },
-  { t: "secret", c: "var" },
-  { t: ")\n  .update(" },
-  { t: "payload", c: "var" },
-  { t: ")\n  .digest(" },
-  { t: "'hex'", c: "str" },
-  { t: ");\n\n" },
-  { t: "// 3. Compare Securely", c: "comment" },
-  { t: "\nconst valid", c: "var" },
-  { t: " = crypto.timingSafeEqual(\n  Buffer.from(" },
-  { t: "expected", c: "var" },
-  { t: "),\n  Buffer.from(" },
-  { t: "signature", c: "var" },
-  { t: ")\n);\n\nif (!valid) {\n  return res.status(401).send(" },
-  { t: "'Invalid Signature'", c: "str" },
-  { t: ");\n}" },
-];
-
-const callbackPayloadTokens: Token[] = [
-  { t: "{\n  " },
-  { t: '"serial_number"', c: "key" },
-  { t: ": " },
-  { t: '"uuid-txn-id-1234"', c: "str" },
-  { t: ",\n  " },
-  { t: '"currency"', c: "key" },
-  { t: ": " },
-  { t: '"USD"', c: "str" },
-  { t: ",\n  " },
-  { t: '"game_uid"', c: "key" },
-  { t: ": " },
-  { t: '"JILI_SLOT_001"', c: "str" },
-  { t: ",\n  " },
-  { t: '"member_account"', c: "key" },
-  { t: ": " },
-  { t: '"player_123"', c: "str" },
-  { t: "," },
-  { t: "    // Your local username", c: "comment" },
-  { t: "\n  " },
-  { t: '"win_amount"', c: "key" },
-  { t: ": " },
-  { t: '"150.00"', c: "str" },
-  { t: "," },
-  { t: "         // Add this to balance", c: "comment" },
-  { t: "\n  " },
-  { t: '"bet_amount"', c: "key" },
-  { t: ": " },
-  { t: '"100.00"', c: "str" },
-  { t: "," },
-  { t: "         // Deduct this from balance", c: "comment" },
-  { t: "\n  " },
-  { t: '"timestamp"', c: "key" },
-  { t: ": " },
-  { t: '"1631459081871"', c: "str" },
-  { t: ",\n  " },
-  { t: '"game_round"', c: "key" },
-  { t: ": " },
-  { t: '"round_id_555"', c: "str" },
-  { t: ",\n  " },
-  { t: '"data"', c: "key" },
-  { t: ": null\n}" },
-];
-
-const callbackResponseTokens: Token[] = [
-  { t: "{\n  " },
-  { t: '"code"', c: "key" },
-  { t: ": " },
-  { t: "0", c: "num" },
-  { t: ",\n  " },
-  { t: '"msg"', c: "key" },
-  { t: ": " },
-  { t: '"Success"', c: "str" },
-  { t: ",\n  " },
-  { t: '"balance"', c: "key" },
-  { t: ": " },
-  { t: "550.00", c: "num" },
-  { t: "\n}" },
-];
-
+/**
+ * The casino integration guide. Content mirrors the previously published
+ * guide; examples now render from src/data/docs-snippets.ts, which tests run.
+ */
 export function IntegrationGuide() {
   return (
-    <div className="space-y-14">
-      <div className="text-center">
-        <div className="flex items-center justify-center gap-3">
-          <Icon name="code" className="size-7 text-amber" />
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground">Getting Started</h2>
-        </div>
-        <div className="mt-6">
-          <WarningBanner>
-            Make sure to set your Callback URL and Whitelist IP in the settings tab before starting
-            integration.
-          </WarningBanner>
-        </div>
-      </div>
-
-      {/* Step 1 */}
-      <div className="space-y-6">
-        <StepHeading number={1} stepTone="primary" title="Launch Game URL" />
-
-        <p className="text-sm leading-relaxed text-muted">
-          Get a whitelabeled game session URL for your players. Your players will be redirected
-          directly to the game frame, masking the upstream provider.
+    <div className="space-y-12">
+      <DocSection id="prerequisites" title="Before you start">
+        <ul className="list-disc space-y-2 pl-5 text-base text-muted">
+          <li>An API key and a secret key, issued with sandbox access by the Octhera team.</li>
+          <li>
+            Your callback URL and whitelisted server IPs, set in the settings tab before integration starts. The
+            callback must be a public HTTPS URL that resolves in DNS.
+          </li>
+          <li>A backend that can read the raw request body of the callback (needed for signature checks).</li>
+        </ul>
+        <p className="max-w-[65ch] text-base text-muted">
+          The examples below use the base URL from the current guide. Confirm the base URL for your sandbox and
+          production environments with the team when you receive credentials.
         </p>
+      </DocSection>
 
-        <InfoBox title="Important:">
-          <p>
-            We generate a provider-safe player name internally (alphanumeric + length limits). Your{" "}
-            <span className="font-semibold text-foreground">member_account</span> remains your own
-            internal player ID.
-          </p>
-          <p>
-            A unique <span className="font-semibold text-foreground">transfer_id</span> is generated
-            automatically for each launch request. No changes are required on your side.
-          </p>
-        </InfoBox>
+      <DocSection id="authentication" title="Authentication">
+        <p className="max-w-[65ch] text-base text-muted">Send JSON over HTTPS with your API key as a Bearer token.</p>
+        <CodeBlock code={snippets.authHeaders} label="Request headers" language="HTTP" />
+      </DocSection>
 
-        <EndpointBar method="POST" path="https://api.octhera.com/v1/games/launch" />
-
-        <div>
-          <Label>Authentication Headers</Label>
-          <Code tokens={authHeaderTokens} />
-        </div>
-
-        <div>
-          <Label>Request JSON</Label>
-          <Code tokens={launchRequestTokens} />
-        </div>
-
-        <div>
-          <Label>Success Response</Label>
-          <Code tokens={launchResponseTokens} />
-        </div>
-      </div>
-
-      {/* Step 2 */}
-      <div className="space-y-6">
-        <StepHeading number={2} stepTone="amber" title="Wallet Callback" />
-
-        <p className="text-sm leading-relaxed text-muted">
-          Receive real-time transaction events (Bet, Win, Refund) seamlessly. When gameplay happens,
-          we push events to your configured endpoint.
+      <DocSection id="launch" title="Launch a game">
+        <p className="max-w-[65ch] text-base text-muted">
+          Get a white-labelled game session URL for a player. The player is sent straight to the game frame, and the
+          upstream provider is masked. Octhera generates a provider-safe player name internally, and a unique{" "}
+          <code className="font-mono text-sm">transfer_id</code> for each launch; your{" "}
+          <code className="font-mono text-sm">member_account</code> stays your own player ID.
         </p>
-
-        <InfoBox title="Callback URL requirement:">
-          <p>
-            Your callback URL must be a valid public HTTPS URL and resolvable by DNS (example:{" "}
-            <span className="font-semibold text-foreground">https://example.com/callback</span>). If
-            your callback is unreachable, the provider settlement will fail.
-          </p>
-        </InfoBox>
-
-        <div className="flex flex-wrap items-center gap-3 rounded-xl border border-border bg-elevated/60 p-4">
-          <span className="rounded-md border border-amber/30 bg-amber/10 px-2 py-1 text-xs font-semibold text-amber">
-            CALLBACK
-          </span>
-          <span className="font-mono text-sm text-amber">POST {"{YOUR_CALLBACK_URL}"}</span>
-        </div>
-
-        <p className="text-sm leading-relaxed text-muted">
-          <span className="font-semibold text-foreground">Signature verification required:</span>{" "}
-          Validate the X-Signature header using your{" "}
-          <span className="rounded-md border border-border bg-elevated px-1.5 py-0.5 font-mono text-[13px] font-semibold text-foreground">
-            Secret Key
-          </span>{" "}
-          to ensure authenticity. The signature is calculated dynamically using{" "}
-          <span className="font-mono text-xs text-foreground">HMAC-SHA256</span> against the raw JSON
-          string content of the webhook HTTP body.
+        <p className="font-mono text-base break-all text-foreground">
+          POST https://api.octhera.com/v1/games/launch
         </p>
+        <CodeBlock code={snippets.launchRequest} label="Launch request body" language="JSON" />
+        <FieldTable
+          caption="Launch request fields"
+          rows={[
+            ["member_account", "string", "Your internal player ID."],
+            ["game_uid", "string", "Game identifier."],
+            ["balance", "number", "The player's balance at launch."],
+            ["home_url", "string", "Where the player returns after leaving the game."],
+          ]}
+        />
+        <CodeBlock code={snippets.launchResponse} label="Success response" language="JSON" />
+      </DocSection>
 
-        <div>
-          <Label>Signature Verification (JavaScript)</Label>
-          <Code tokens={signatureVerificationTokens} />
-        </div>
+      <DocSection id="wallet-callback" title="Wallet callback">
+        <p className="max-w-[65ch] text-base text-muted">
+          When gameplay happens, Octhera posts transaction events (bet, win, refund) to your configured callback URL:{" "}
+          <code className="font-mono text-sm">POST {"{YOUR_CALLBACK_URL}"}</code>. If your callback can&apos;t be
+          reached, settlement with the provider fails.
+        </p>
+        <CodeBlock code={snippets.callbackPayload} label="Callback request body" language="JSON" />
+        <FieldTable
+          caption="Callback fields"
+          rows={[
+            ["serial_number", "string", "Transaction ID. Store it with your ledger entry and apply each one once."],
+            ["currency", "string", "Currency code."],
+            ["game_uid", "string", "Game identifier."],
+            ["member_account", "string", "Your player ID."],
+            ["bet_amount", "string (decimal)", "Deduct from the balance."],
+            ["win_amount", "string (decimal)", "Add to the balance."],
+            ["timestamp", "string (ms epoch)", "Event time."],
+            ["game_round", "string", "Round ID for reconciliation."],
+            ["data", "null", "Shown as null in the current example."],
+          ]}
+        />
+      </DocSection>
 
-        <div>
-          <Label>Request Payload</Label>
-          <Code tokens={callbackPayloadTokens} />
-        </div>
+      <DocSection id="signatures" title="Verify signatures">
+        <p className="max-w-[65ch] text-base text-muted">
+          Every callback has an <code className="font-mono text-sm">X-Signature</code> header: an HMAC-SHA256 of the
+          raw JSON body using your secret key, as hex. Verify it against the exact bytes you received, before parsing
+          JSON. This example checks the header&apos;s type, format and length first, so malformed input is rejected
+          instead of throwing, then compares in constant time.
+        </p>
+        <CodeBlock code={snippets.verifySignatureFunction} label="Signature verification" language="JavaScript, Node.js" />
+        <CodeBlock code={snippets.verifySignatureUsage} label="Using it in a handler" language="JavaScript, Express" />
+      </DocSection>
 
-        <div>
-          <Label>Your Expected Response</Label>
-          <p className="mb-3 text-sm leading-relaxed text-muted">
-            Respond with <span className="font-mono text-xs text-foreground">200 OK</span> and your
-            updated database balance inside the JSON payload parameters.
-          </p>
-          <Code tokens={callbackResponseTokens} />
-        </div>
-      </div>
+      <DocSection id="callback-response" title="Respond to callbacks">
+        <p className="max-w-[65ch] text-base text-muted">
+          Reply with <code className="font-mono text-sm">200 OK</code> and the player&apos;s updated balance from your
+          database.
+        </p>
+        <CodeBlock code={snippets.callbackResponse} label="Your expected response" language="JSON" />
+      </DocSection>
 
-      <div className="border-t border-border pt-8 text-center text-sm text-muted">
-        Need help integrating?{" "}
-        <a
-          href={siteConfig.telegram}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-primary-bright hover:underline"
-        >
-          Contact Tech Support
-        </a>
-      </div>
+      <DocSection id="not-yet-documented" title="Not yet documented">
+        <p className="max-w-[65ch] text-base text-muted">
+          The following aren&apos;t published in this guide yet. Ask the team for them before going live:
+        </p>
+        <ul className="list-disc space-y-2 pl-5 text-base text-muted">
+          <li>Sandbox and production base URLs</li>
+          <li>Error codes and their meaning</li>
+          <li>Callback retry behaviour, and how refunds are distinguished in the payload</li>
+          <li>Rate limits and versioning policy</li>
+        </ul>
+      </DocSection>
+
+      <DocSection id="support" title="Support">
+        <p className="max-w-[65ch] text-base text-muted">
+          For integration questions,{" "}
+          <a href={siteConfig.telegram} target="_blank" rel="noopener noreferrer" className="link-inline">
+            message our team on Telegram
+          </a>{" "}
+          or email{" "}
+          <a href={`mailto:${siteConfig.salesEmail}`} className="link-inline">
+            {siteConfig.salesEmail}
+          </a>
+          . For scope and onboarding, see the{" "}
+          <Link href="/products/casino-api" className="link-inline">
+            Casino API overview
+          </Link>
+          .
+        </p>
+        <p className="text-sm text-muted">Guide last updated {guideUpdated}.</p>
+      </DocSection>
     </div>
   );
 }

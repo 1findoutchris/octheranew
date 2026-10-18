@@ -6,6 +6,8 @@ The Search Console figures from October 17, 2026 are historical. Every finding b
 
 ## 0. Update (October 17, 2026, after merging PR #7): the public domain does not reach Railway
 
+> **Resolved (historical).** The independent audit on 17 October 2026 found public responses served by Railway with the PR #8 content. This section records the earlier incident only; it is not a current DNS instruction.
+
 After PR #7 merged, Railway deployed `e280816` successfully, but octhera.org still served the old page.
 
 Evidence from Railway (read through the Railway API):

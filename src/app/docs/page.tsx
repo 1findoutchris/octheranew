@@ -3,9 +3,8 @@ import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { Reveal } from "@/components/ui/Reveal";
 import { CTASection } from "@/components/sections/CTASection";
-import { IntegrationGuide } from "@/components/docs/IntegrationGuide";
+import { IntegrationGuide, guideSections } from "@/components/docs/IntegrationGuide";
 
 export const metadata: Metadata = pageMetadata({
   title: "Casino API Documentation: Game Launch & Wallet Callback",
@@ -25,7 +24,7 @@ export default function DocsPage() {
             How to connect your platform to Octhera game aggregation: launch a game session, then
             settle bets, wins and refunds through a signed wallet callback. For a summary of the
             integration and onboarding steps, see the{" "}
-            <Link href="/products/casino-api" className="font-medium text-primary-bright hover:underline">
+            <Link href="/products/casino-api" className="link-inline">
               Casino API overview
             </Link>
             .
@@ -33,21 +32,32 @@ export default function DocsPage() {
         }
       />
 
-      <section className="py-24 lg:py-32">
-        <Container>
-          <Reveal id="getting-started" className="scroll-mt-28">
+      <section className="theme-light section-y">
+        <Container className="grid gap-10 lg:grid-cols-[220px_1fr]">
+          <nav aria-label="On this page" className="lg:sticky lg:top-24 lg:self-start">
+            <p className="text-sm font-semibold text-foreground">On this page</p>
+            <ul className="mt-2">
+              {guideSections.map((s) => (
+                <li key={s.id}>
+                  <a href={`#${s.id}`} className="flex min-h-11 items-center text-base text-muted hover:text-foreground hover:underline">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="min-w-0 max-w-[960px]">
             <IntegrationGuide />
-          </Reveal>
+          </div>
         </Container>
       </section>
 
       <CTASection
-        eyebrow="API Access"
         title="Ready to start integrating?"
-        description="Talk to our team to get sandbox credentials and start building against the launch and wallet callback flows."
-        primaryLabel="Talk to Sales"
-        primaryHref="/contact"
-        secondaryLabel="View API Pricing"
+        description="Sandbox credentials are issued after a short conversation about your platform and markets."
+        primaryLabel="Discuss sandbox access"
+        context={{ request: "sandbox", product: "casino-api" }}
+        secondaryLabel="View API pricing"
         secondaryHref="/pricing#game-aggregation-api"
       />
     </>

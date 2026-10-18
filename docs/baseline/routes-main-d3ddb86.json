@@ -1,0 +1,735 @@
+{
+ "pages": {
+  "/": {
+   "status": 200,
+   "title": "Octhera | B2B iGaming Platform, Casino Aggregator & Sportsbook",
+   "canonical": "https://octhera.org",
+   "robots": null,
+   "description": "B2B iGaming technology for licensed operators: casino game aggregation through one API, a sportsbook, and white label and turnkey platforms, with published pricing.",
+   "h1s": [
+    "B2B iGaming platform for casino and sportsbook operators"
+   ]
+  },
+  "/products": {
+   "status": 200,
+   "title": "B2B iGaming Products for Casino & Sportsbook Operators | Octhera",
+   "canonical": "https://octhera.org/products",
+   "robots": null,
+   "description": "Octhera's B2B iGaming products: casino aggregator, casino API, sportsbook, turnkey, white label, back office, payments and affiliate system. Compare what each one is for.",
+   "h1s": [
+    "Technology for every stage of your business"
+   ]
+  },
+  "/game-aggregation": {
+   "status": 200,
+   "title": "What Is Casino Game Aggregation? How It Works | Octhera",
+   "canonical": "https://octhera.org/game-aggregation",
+   "robots": null,
+   "description": "How casino game aggregation works, how it compares with integrating each studio directly, and what operators should check when choosing a game aggregator.",
+   "h1s": [
+    "How casino game aggregation works"
+   ]
+  },
+  "/providers": {
+   "status": 200,
+   "title": "Casino Game Provider Directory | Octhera",
+   "canonical": "https://octhera.org/providers",
+   "robots": null,
+   "description": "Browse game studios in the Octhera provider directory by category: slots, live casino, crash, table games and more. Market availability confirmed on request.",
+   "h1s": [
+    "Casino game provider directory"
+   ]
+  },
+  "/platform": {
+   "status": 200,
+   "title": "iGaming Platform & Operator Back Office | Octhera",
+   "canonical": "https://octhera.org/platform",
+   "robots": null,
+   "description": "The Octhera platform layer: player and wallet management, game controls, risk, bonuses, CRM, affiliates, reporting and role-based access for operator teams.",
+   "h1s": [
+    "The technology layer underneath your operation"
+   ]
+  },
+  "/solutions": {
+   "status": 200,
+   "title": "iGaming Solutions by Operator Type | Octhera",
+   "canonical": "https://octhera.org/solutions",
+   "robots": null,
+   "description": "Which Octhera products fit startups, existing operators, casino brands, sportsbook operators, affiliates, media companies and land-based operators.",
+   "h1s": [
+    "Built for every kind of gaming business"
+   ]
+  },
+  "/pricing": {
+   "status": 200,
+   "title": "Pricing: Aggregation API, White Label & Turnkey Plans | Octhera",
+   "canonical": "https://octhera.org/pricing",
+   "robots": null,
+   "description": "Published USD launch pricing for Octhera's Game Aggregation API, White Label, Turnkey and Enterprise plans, including the GGR share for each plan where listed.",
+   "h1s": [
+    "Plans and pricing for game aggregation, white label and turnkey"
+   ]
+  },
+  "/docs": {
+   "status": 200,
+   "title": "Casino API Documentation: Game Launch & Wallet Callback | Octhera",
+   "canonical": "https://octhera.org/docs",
+   "robots": null,
+   "description": "Octhera integration guide: authenticate with a Bearer API key, launch games with POST /v1/games/launch and verify HMAC-SHA256 signed wallet callbacks.",
+   "h1s": [
+    "Casino API integration guide"
+   ]
+  },
+  "/about": {
+   "status": 200,
+   "title": "About Us: B2B iGaming Technology Supplier | Octhera",
+   "canonical": "https://octhera.org/about",
+   "robots": null,
+   "description": "Octhera is a B2B iGaming technology supplier of casino aggregation, sportsbook, white label and turnkey platforms to licensed operators. No consumer gambling.",
+   "h1s": [
+    "Technology infrastructure for the next generation of gaming businesses"
+   ]
+  },
+  "/contact": {
+   "status": 200,
+   "title": "Contact Sales | Octhera",
+   "canonical": "https://octhera.org/contact",
+   "robots": null,
+   "description": "Contact Octhera sales on Telegram or at sales@octhera.org about casino aggregation, the casino API, sportsbook, white label, turnkey or enterprise plans.",
+   "h1s": [
+    "Let&#x27;s talk about your business"
+   ]
+  },
+  "/products/casino-aggregator": {
+   "status": 200,
+   "title": "Casino Game Aggregator for Online Casino Operators | Octhera",
+   "canonical": "https://octhera.org/products/casino-aggregator",
+   "robots": null,
+   "description": "Evaluate Octhera's casino game aggregator: one integration for multi-studio content, a seamless wallet model, provider controls and published pricing.",
+   "h1s": [
+    "Casino game aggregator for online casino operators"
+   ]
+  },
+  "/products/sportsbook": {
+   "status": 200,
+   "title": "B2B Sportsbook Platform for Pre-Match & Live Betting | Octhera",
+   "canonical": "https://octhera.org/products/sportsbook",
+   "robots": null,
+   "description": "Octhera's B2B sportsbook: pre-match and live betting, risk and trading tools, and configurable odds and margins, in your platform or as part of a turnkey stack.",
+   "h1s": [
+    "B2B sportsbook platform for pre-match and live betting"
+   ]
+  },
+  "/products/turnkey-casino": {
+   "status": 200,
+   "title": "Turnkey Casino & Sportsbook Platform | Octhera",
+   "canonical": "https://octhera.org/products/turnkey-casino",
+   "robots": null,
+   "description": "Octhera Turnkey: frontend, casino, sportsbook, back office, payments and affiliate tooling delivered as one operator platform, with published USD launch pricing.",
+   "h1s": [
+    "Turnkey casino and sportsbook platform"
+   ]
+  },
+  "/products/white-label": {
+   "status": 200,
+   "title": "White Label iGaming Platform | Octhera",
+   "canonical": "https://octhera.org/products/white-label",
+   "robots": null,
+   "description": "Octhera White Label: a ready-made casino platform with game aggregation, payments and back office included, for brands launching without owning infrastructure.",
+   "h1s": [
+    "White label iGaming platform"
+   ]
+  },
+  "/products/casino-api": {
+   "status": 200,
+   "title": "Casino API: Game Launch & Seamless Wallet Integration | Octhera",
+   "canonical": "https://octhera.org/products/casino-api",
+   "robots": null,
+   "description": "How Octhera's casino API works: Bearer-authenticated game launch, a seamless wallet callback for bets, wins and refunds, HMAC-SHA256 signatures and onboarding steps.",
+   "h1s": [
+    "Casino API for game launch and seamless wallet integration"
+   ]
+  },
+  "/products/back-office": {
+   "status": 200,
+   "title": "iGaming Back Office for Operators | Octhera",
+   "canonical": "https://octhera.org/products/back-office",
+   "robots": null,
+   "description": "Octhera Back Office: player and KYC management, game and provider controls, bonus configuration and operational reporting in one interface.",
+   "h1s": [
+    "iGaming back office for operators"
+   ]
+  },
+  "/products/payments": {
+   "status": 200,
+   "title": "iGaming Payments Integration | Octhera",
+   "canonical": "https://octhera.org/products/payments",
+   "robots": null,
+   "description": "Octhera Payments: connect deposits, withdrawals and payment methods to your platform with configurable limits and centralized transaction reporting.",
+   "h1s": [
+    "Payments integration for iGaming operators"
+   ]
+  },
+  "/products/affiliate-system": {
+   "status": 200,
+   "title": "iGaming Affiliate Management System | Octhera",
+   "canonical": "https://octhera.org/products/affiliate-system",
+   "robots": null,
+   "description": "Octhera Affiliate System: onboard affiliate partners, track clicks and conversions, configure commission models and report performance.",
+   "h1s": [
+    "Affiliate management system for iGaming"
+   ]
+  },
+  "/providers/pragmatic-play": {
+   "status": 200,
+   "title": "Pragmatic Play Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/pragmatic-play",
+   "robots": "noindex, follow",
+   "description": "Pragmatic Play (Slots, Live Casino, Crash) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Pragmatic Play"
+   ]
+  },
+  "/providers/evolution": {
+   "status": 200,
+   "title": "Evolution Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/evolution",
+   "robots": "noindex, follow",
+   "description": "Evolution (Live Casino) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Evolution"
+   ]
+  },
+  "/providers/netent": {
+   "status": 200,
+   "title": "NetEnt Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/netent",
+   "robots": "noindex, follow",
+   "description": "NetEnt (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "NetEnt"
+   ]
+  },
+  "/providers/red-tiger": {
+   "status": 200,
+   "title": "Red Tiger Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/red-tiger",
+   "robots": "noindex, follow",
+   "description": "Red Tiger (Slots, Jackpot) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Red Tiger"
+   ]
+  },
+  "/providers/playn-go": {
+   "status": 200,
+   "title": "Play'n GO Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/playn-go",
+   "robots": "noindex, follow",
+   "description": "Play'n GO (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Play&#x27;n GO"
+   ]
+  },
+  "/providers/playtech": {
+   "status": 200,
+   "title": "Playtech Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/playtech",
+   "robots": "noindex, follow",
+   "description": "Playtech (Slots, Live Casino, Table Games) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Playtech"
+   ]
+  },
+  "/providers/relax-gaming": {
+   "status": 200,
+   "title": "Relax Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/relax-gaming",
+   "robots": "noindex, follow",
+   "description": "Relax Gaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Relax Gaming"
+   ]
+  },
+  "/providers/hacksaw-gaming": {
+   "status": 200,
+   "title": "Hacksaw Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/hacksaw-gaming",
+   "robots": "noindex, follow",
+   "description": "Hacksaw Gaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Hacksaw Gaming"
+   ]
+  },
+  "/providers/bgaming": {
+   "status": 200,
+   "title": "BGaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/bgaming",
+   "robots": "noindex, follow",
+   "description": "BGaming (Slots, Crash) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "BGaming"
+   ]
+  },
+  "/providers/elk-studios": {
+   "status": 200,
+   "title": "ELK Studios Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/elk-studios",
+   "robots": "noindex, follow",
+   "description": "ELK Studios (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "ELK Studios"
+   ]
+  },
+  "/providers/blueprint-gaming": {
+   "status": 200,
+   "title": "Blueprint Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/blueprint-gaming",
+   "robots": "noindex, follow",
+   "description": "Blueprint Gaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Blueprint Gaming"
+   ]
+  },
+  "/providers/spinomenal": {
+   "status": 200,
+   "title": "Spinomenal Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/spinomenal",
+   "robots": "noindex, follow",
+   "description": "Spinomenal (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Spinomenal"
+   ]
+  },
+  "/providers/games-global": {
+   "status": 200,
+   "title": "Games Global Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/games-global",
+   "robots": "noindex, follow",
+   "description": "Games Global (Slots, Jackpot) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Games Global"
+   ]
+  },
+  "/providers/big-time-gaming": {
+   "status": 200,
+   "title": "Big Time Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/big-time-gaming",
+   "robots": "noindex, follow",
+   "description": "Big Time Gaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Big Time Gaming"
+   ]
+  },
+  "/providers/nolimit-city": {
+   "status": 200,
+   "title": "Nolimit City Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/nolimit-city",
+   "robots": "noindex, follow",
+   "description": "Nolimit City (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Nolimit City"
+   ]
+  },
+  "/providers/push-gaming": {
+   "status": 200,
+   "title": "Push Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/push-gaming",
+   "robots": "noindex, follow",
+   "description": "Push Gaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Push Gaming"
+   ]
+  },
+  "/providers/quickspin": {
+   "status": 200,
+   "title": "Quickspin Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/quickspin",
+   "robots": "noindex, follow",
+   "description": "Quickspin (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Quickspin"
+   ]
+  },
+  "/providers/yggdrasil": {
+   "status": 200,
+   "title": "Yggdrasil Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/yggdrasil",
+   "robots": "noindex, follow",
+   "description": "Yggdrasil (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Yggdrasil"
+   ]
+  },
+  "/providers/thunderkick": {
+   "status": 200,
+   "title": "Thunderkick Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/thunderkick",
+   "robots": "noindex, follow",
+   "description": "Thunderkick (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Thunderkick"
+   ]
+  },
+  "/providers/betsoft": {
+   "status": 200,
+   "title": "Betsoft Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/betsoft",
+   "robots": "noindex, follow",
+   "description": "Betsoft (Slots, Table Games) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Betsoft"
+   ]
+  },
+  "/providers/amatic": {
+   "status": 200,
+   "title": "Amatic Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/amatic",
+   "robots": "noindex, follow",
+   "description": "Amatic (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Amatic"
+   ]
+  },
+  "/providers/endorphina": {
+   "status": 200,
+   "title": "Endorphina Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/endorphina",
+   "robots": "noindex, follow",
+   "description": "Endorphina (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Endorphina"
+   ]
+  },
+  "/providers/evoplay": {
+   "status": 200,
+   "title": "Evoplay Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/evoplay",
+   "robots": "noindex, follow",
+   "description": "Evoplay (Slots, Crash, Instant) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Evoplay"
+   ]
+  },
+  "/providers/habanero": {
+   "status": 200,
+   "title": "Habanero Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/habanero",
+   "robots": "noindex, follow",
+   "description": "Habanero (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Habanero"
+   ]
+  },
+  "/providers/wazdan": {
+   "status": 200,
+   "title": "Wazdan Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/wazdan",
+   "robots": "noindex, follow",
+   "description": "Wazdan (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Wazdan"
+   ]
+  },
+  "/providers/playson": {
+   "status": 200,
+   "title": "Playson Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/playson",
+   "robots": "noindex, follow",
+   "description": "Playson (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Playson"
+   ]
+  },
+  "/providers/booongo": {
+   "status": 200,
+   "title": "Booongo Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/booongo",
+   "robots": "noindex, follow",
+   "description": "Booongo (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Booongo"
+   ]
+  },
+  "/providers/fugaso": {
+   "status": 200,
+   "title": "Fugaso Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/fugaso",
+   "robots": "noindex, follow",
+   "description": "Fugaso (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Fugaso"
+   ]
+  },
+  "/providers/1x2-network": {
+   "status": 200,
+   "title": "1X2 Network Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/1x2-network",
+   "robots": "noindex, follow",
+   "description": "1X2 Network (Slots, Table Games) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "1X2 Network"
+   ]
+  },
+  "/providers/gaming-realms": {
+   "status": 200,
+   "title": "Gaming Realms Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/gaming-realms",
+   "robots": "noindex, follow",
+   "description": "Gaming Realms (Slots, Jackpot) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Gaming Realms"
+   ]
+  },
+  "/providers/inspired-entertainment": {
+   "status": 200,
+   "title": "Inspired Entertainment Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/inspired-entertainment",
+   "robots": "noindex, follow",
+   "description": "Inspired Entertainment (Slots, Virtual Sports) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Inspired Entertainment"
+   ]
+  },
+  "/providers/ezugi": {
+   "status": 200,
+   "title": "Ezugi Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/ezugi",
+   "robots": "noindex, follow",
+   "description": "Ezugi (Live Casino) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Ezugi"
+   ]
+  },
+  "/providers/authentic-gaming": {
+   "status": 200,
+   "title": "Authentic Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/authentic-gaming",
+   "robots": "noindex, follow",
+   "description": "Authentic Gaming (Live Casino) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Authentic Gaming"
+   ]
+  },
+  "/providers/vivo-gaming": {
+   "status": 200,
+   "title": "Vivo Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/vivo-gaming",
+   "robots": "noindex, follow",
+   "description": "Vivo Gaming (Live Casino) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Vivo Gaming"
+   ]
+  },
+  "/providers/betgames": {
+   "status": 200,
+   "title": "BetGames Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/betgames",
+   "robots": "noindex, follow",
+   "description": "BetGames (Live Casino, Instant) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "BetGames"
+   ]
+  },
+  "/providers/tvbet": {
+   "status": 200,
+   "title": "TVBet Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/tvbet",
+   "robots": "noindex, follow",
+   "description": "TVBet (Live Casino, Instant) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "TVBet"
+   ]
+  },
+  "/providers/spribe": {
+   "status": 200,
+   "title": "Spribe Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/spribe",
+   "robots": "noindex, follow",
+   "description": "Spribe (Crash, Instant) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Spribe"
+   ]
+  },
+  "/providers/turbo-games": {
+   "status": 200,
+   "title": "Turbo Games Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/turbo-games",
+   "robots": "noindex, follow",
+   "description": "Turbo Games (Crash, Instant) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Turbo Games"
+   ]
+  },
+  "/providers/smartsoft-gaming": {
+   "status": 200,
+   "title": "SmartSoft Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/smartsoft-gaming",
+   "robots": "noindex, follow",
+   "description": "SmartSoft Gaming (Crash, Instant) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "SmartSoft Gaming"
+   ]
+  },
+  "/providers/popok-gaming": {
+   "status": 200,
+   "title": "PopOK Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/popok-gaming",
+   "robots": "noindex, follow",
+   "description": "PopOK Gaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "PopOK Gaming"
+   ]
+  },
+  "/providers/mascot-games": {
+   "status": 200,
+   "title": "Mascot Games Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/mascot-games",
+   "robots": "noindex, follow",
+   "description": "Mascot Games (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Mascot Games"
+   ]
+  },
+  "/providers/belatra-games": {
+   "status": 200,
+   "title": "Belatra Games Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/belatra-games",
+   "robots": "noindex, follow",
+   "description": "Belatra Games (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Belatra Games"
+   ]
+  },
+  "/providers/ka-gaming": {
+   "status": 200,
+   "title": "KA Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/ka-gaming",
+   "robots": "noindex, follow",
+   "description": "KA Gaming (Slots, Table Games) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "KA Gaming"
+   ]
+  },
+  "/providers/pg-soft": {
+   "status": 200,
+   "title": "PG Soft Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/pg-soft",
+   "robots": "noindex, follow",
+   "description": "PG Soft (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "PG Soft"
+   ]
+  },
+  "/providers/jdb-gaming": {
+   "status": 200,
+   "title": "JDB Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/jdb-gaming",
+   "robots": "noindex, follow",
+   "description": "JDB Gaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "JDB Gaming"
+   ]
+  },
+  "/providers/cq9-gaming": {
+   "status": 200,
+   "title": "CQ9 Gaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/cq9-gaming",
+   "robots": "noindex, follow",
+   "description": "CQ9 Gaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "CQ9 Gaming"
+   ]
+  },
+  "/providers/spadegaming": {
+   "status": 200,
+   "title": "Spadegaming Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/spadegaming",
+   "robots": "noindex, follow",
+   "description": "Spadegaming (Slots) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Spadegaming"
+   ]
+  },
+  "/providers/playtech-live": {
+   "status": 200,
+   "title": "Playtech Live Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/playtech-live",
+   "robots": "noindex, follow",
+   "description": "Playtech Live (Live Casino) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Playtech Live"
+   ]
+  },
+  "/providers/evolution-live": {
+   "status": 200,
+   "title": "Evolution Live Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/evolution-live",
+   "robots": "noindex, follow",
+   "description": "Evolution Live (Live Casino) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Evolution Live"
+   ]
+  },
+  "/providers/pragmatic-play-live": {
+   "status": 200,
+   "title": "Pragmatic Play Live Games via Octhera | Octhera",
+   "canonical": "https://octhera.org/providers/pragmatic-play-live",
+   "robots": "noindex, follow",
+   "description": "Pragmatic Play Live (Live Casino) in the Octhera provider directory. Availability for your markets is confirmed on request.",
+   "h1s": [
+    "Pragmatic Play Live"
+   ]
+  },
+  "/login": {
+   "status": 404,
+   "title": "Octhera | B2B iGaming Platform & Game Aggregation",
+   "canonical": null,
+   "robots": "noindex",
+   "description": "Octhera is a B2B iGaming technology platform providing casino aggregation, sportsbook, turnkey and white-label infrastructure for operators worldwide.",
+   "h1s": [
+    "404"
+   ]
+  },
+  "/privacy": {
+   "status": 404,
+   "title": "Octhera | B2B iGaming Platform & Game Aggregation",
+   "canonical": null,
+   "robots": "noindex",
+   "description": "Octhera is a B2B iGaming technology platform providing casino aggregation, sportsbook, turnkey and white-label infrastructure for operators worldwide.",
+   "h1s": [
+    "404"
+   ]
+  },
+  "/terms": {
+   "status": 404,
+   "title": "Octhera | B2B iGaming Platform & Game Aggregation",
+   "canonical": null,
+   "robots": "noindex",
+   "description": "Octhera is a B2B iGaming technology platform providing casino aggregation, sportsbook, turnkey and white-label infrastructure for operators worldwide.",
+   "h1s": [
+    "404"
+   ]
+  }
+ },
+ "sitemap": [
+  "https://octhera.org",
+  "https://octhera.org/products",
+  "https://octhera.org/game-aggregation",
+  "https://octhera.org/providers",
+  "https://octhera.org/platform",
+  "https://octhera.org/solutions",
+  "https://octhera.org/pricing",
+  "https://octhera.org/docs",
+  "https://octhera.org/about",
+  "https://octhera.org/contact",
+  "https://octhera.org/products/casino-aggregator",
+  "https://octhera.org/products/sportsbook",
+  "https://octhera.org/products/turnkey-casino",
+  "https://octhera.org/products/white-label",
+  "https://octhera.org/products/casino-api",
+  "https://octhera.org/products/back-office",
+  "https://octhera.org/products/payments",
+  "https://octhera.org/products/affiliate-system"
+ ],
+ "robots": "User-Agent: *\nAllow: /\n\nSitemap: https://octhera.org/sitemap.xml\n"
+}

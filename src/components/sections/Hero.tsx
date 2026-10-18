@@ -1,46 +1,32 @@
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/Reveal";
-import { HeroVisual } from "@/components/sections/HeroVisual";
-import { CasinoAtmosphere } from "@/components/sections/CasinoAtmosphere";
+import { ArchitectureIllustration } from "@/components/sections/ArchitectureIllustration";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-36 pb-20 lg:pt-44 lg:pb-28">
-      <CasinoAtmosphere />
-
-      <Container className="relative grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
-        <Reveal>
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary-border bg-primary-soft px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-bright">
-            <span className="h-1.5 w-1.5 rounded-full dot-active" />
-            Powering the Future of iGaming
-          </span>
-
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            B2B iGaming platform for{" "}
-            <span className="text-gradient-accent">casino and sportsbook operators</span>
-          </h1>
-
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            Octhera supplies licensed operators with casino game aggregation
-            through one API, a sportsbook for pre-match and live betting, and
-            white label or turnkey platforms with payments and back office.
-            Plans and pricing are published.
+    <section className="border-b border-border bg-background section-y">
+      <Container className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary-bright">
+            B2B iGaming technology for licensed operators
           </p>
-
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <h1 className="type-h1 mt-4">Casino aggregation and platform technology for operators</h1>
+          <p className="type-lead mt-6 text-muted">
+            Connect your existing platform to multi-studio casino content through one API, or
+            launch on a White Label or Turnkey platform. A sportsbook is available on your own
+            platform or as part of Turnkey. Octhera supplies technology; it does not offer gambling
+            to consumers.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/products" size="lg" showArrow>
-              Explore Products
+              Explore solutions
             </Button>
             <Button href="/contact" size="lg" variant="secondary">
-              Talk to Sales
+              Talk to sales
             </Button>
           </div>
-        </Reveal>
-
-        <Reveal delay={150}>
-          <HeroVisual />
-        </Reveal>
+        </div>
+        <ArchitectureIllustration />
       </Container>
     </section>
   );

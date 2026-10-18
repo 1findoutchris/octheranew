@@ -47,6 +47,8 @@ export type Product = {
   seoDescription: string;
   /** Descriptive page H1; defaults to the product name. */
   h1?: string;
+  /** Published plans (src/data/pricing.ts) whose feature list includes this product. */
+  includedInPlans: string[];
   detail?: ProductDetail;
 };
 
@@ -61,6 +63,7 @@ const operatorLicensing =
 export const products: Product[] = [
   {
     slug: "casino-aggregator",
+    includedInPlans: ["game-aggregation-api", "white-label", "turnkey"],
     name: "Casino Aggregator",
     icon: "aggregator",
     tagline: "One integration for multi-studio casino content.",
@@ -81,6 +84,7 @@ export const products: Product[] = [
   },
   {
     slug: "sportsbook",
+    includedInPlans: ["turnkey"],
     name: "Sportsbook",
     icon: "sportsbook",
     tagline: "Pre-match and live betting infrastructure.",
@@ -101,6 +105,7 @@ export const products: Product[] = [
   },
   {
     slug: "turnkey-casino",
+    includedInPlans: ["turnkey"],
     name: "Turnkey Casino",
     icon: "turnkey",
     tagline: "A complete operator solution.",
@@ -120,6 +125,7 @@ export const products: Product[] = [
   },
   {
     slug: "white-label",
+    includedInPlans: ["white-label"],
     name: "White Label",
     icon: "white-label",
     tagline: "A faster route to market.",
@@ -139,6 +145,7 @@ export const products: Product[] = [
   },
   {
     slug: "casino-api",
+    includedInPlans: ["game-aggregation-api"],
     name: "Casino API",
     icon: "api",
     tagline: "Game launch and seamless wallet for your platform.",
@@ -159,6 +166,7 @@ export const products: Product[] = [
   },
   {
     slug: "back-office",
+    includedInPlans: ["white-label", "turnkey"],
     name: "Back Office",
     icon: "back-office",
     tagline: "Operational control, in one place.",
@@ -178,6 +186,7 @@ export const products: Product[] = [
   },
   {
     slug: "payments",
+    includedInPlans: ["white-label", "turnkey"],
     name: "Payments",
     icon: "payments",
     tagline: "Payment integration infrastructure.",
@@ -197,6 +206,7 @@ export const products: Product[] = [
   },
   {
     slug: "affiliate-system",
+    includedInPlans: ["turnkey"],
     name: "Affiliate System",
     icon: "affiliate",
     tagline: "Affiliate management and tracking.",
@@ -399,7 +409,7 @@ function casinoAggregatorDetail(): ProductDetail {
       {
         question: "Which providers are available in my market?",
         answer:
-          "It depends on the market and your licence. Our provider directory lists the studios we work with; tell us your markets and we'll confirm which are available to you before you sign.",
+          "It depends on the market and your licence. Our provider directory lists studios as directory entries; tell us your markets and we'll confirm which are available to you before you sign.",
       },
       {
         question: "Who holds the player's balance?",
@@ -431,7 +441,7 @@ function casinoAggregatorDetail(): ProductDetail {
       {
         label: "Provider directory",
         href: "/providers",
-        description: "Studios we work with, filterable by game category.",
+        description: "Studios listed in our directory, filterable by game category.",
       },
       {
         label: "Pricing",
@@ -766,7 +776,7 @@ function sportsbookDetail(): ProductDetail {
         operatorLicensing,
         "Deciding which sports and markets to offer in each jurisdiction",
         "Setting your margins, limits and risk appetite",
-        "Player accounts, funds and customer support, unless you take Turnkey",
+        "Player accounts, player funds and customer support on your own platform. If you take Turnkey, which of these the platform provides tooling for is agreed in your contract; legal responsibility stays with you as the licensed operator",
       ],
     },
     prerequisites: [

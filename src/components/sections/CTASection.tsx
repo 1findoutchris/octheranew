@@ -1,61 +1,60 @@
+import { siteConfig } from "@/data/site";
+import { contactHref, type ContactContext } from "@/lib/contact-context";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/Reveal";
-import { siteConfig } from "@/data/site";
 
+/**
+ * Closing contact panel shared across pages. The primary action carries
+ * allowlisted context (product, plan, request type) to /contact.
+ */
 export function CTASection({
-  eyebrow = "Get Started",
-  title = "Ready to talk to Octhera?",
-  description = "Tell us about your business and our team will help you find the right product to launch or grow with.",
-  primaryLabel = "Talk to Sales",
-  primaryHref = "/contact",
-  secondaryLabel = "Explore Products",
-  secondaryHref = "/products",
+  title = "Talk to Octhera",
+  description = "Tell us what you operate and what you want to launch. Someone from the team follows up by email or Telegram to agree next steps.",
+  primaryLabel = "Talk to sales",
+  context,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
 }: {
-  eyebrow?: string;
   title?: string;
   description?: string;
   primaryLabel?: string;
+  context?: Partial<ContactContext>;
+  /** Overrides the contextual /contact link. */
   primaryHref?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
 }) {
   return (
-    <section className="py-24 lg:py-32">
+    <section className="theme-light section-y" aria-labelledby="cta-heading">
       <Container>
-        <Reveal className="card-surface border-glow relative overflow-hidden rounded-3xl px-6 py-16 text-center sm:px-16">
-          <div className="absolute inset-0 bg-radial-fade" />
-          <div className="animate-pulse-glow absolute left-1/2 top-0 h-40 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-3xl" />
-          <div className="relative">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary-bright">
-              <span className="h-1.5 w-1.5 rounded-full dot-active" />
-              {eyebrow}
-            </span>
-            <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-              {title}
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted">
-              {description}
-            </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button href={primaryHref} size="lg" showArrow>
-                {primaryLabel}
-              </Button>
+        <div className="rounded-xl border border-border bg-elevated p-6 md:p-10">
+          <h2 id="cta-heading" className="type-h2">
+            {title}
+          </h2>
+          <p className="type-lead mt-4 text-muted">{description}</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button href={primaryHref ?? contactHref(context)} size="lg">
+              {primaryLabel}
+            </Button>
+            {secondaryLabel && secondaryHref && (
               <Button href={secondaryHref} size="lg" variant="secondary">
                 {secondaryLabel}
               </Button>
-            </div>
-            <p className="mt-6 text-sm text-muted">
-              Or email sales at{" "}
-              <a
-                href={`mailto:${siteConfig.salesEmail}`}
-                className="font-medium text-primary-bright hover:underline"
-              >
-                {siteConfig.salesEmail}
-              </a>
-            </p>
+            )}
           </div>
-        </Reveal>
+          <p className="mt-6 text-base text-muted">
+            Prefer to write directly? Email{" "}
+            <a href={`mailto:${siteConfig.salesEmail}`} className="link-inline">
+              {siteConfig.salesEmail}
+            </a>{" "}
+            or{" "}
+            <a href={siteConfig.telegram} target="_blank" rel="noopener noreferrer" className="link-inline">
+              message our team on Telegram
+            </a>
+            .
+          </p>
+        </div>
       </Container>
     </section>
   );

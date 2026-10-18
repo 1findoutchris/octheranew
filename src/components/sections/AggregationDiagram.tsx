@@ -1,42 +1,46 @@
 import { Icon, type IconName } from "@/components/ui/Icon";
-import { Reveal } from "@/components/ui/Reveal";
 
 const layers: { icon: IconName; title: string; description: string }[] = [
-  { icon: "grid", title: "Game Providers", description: "Slots, live casino, crash, table games and more from studios across the industry." },
-  { icon: "layers", title: "Octhera Aggregation Layer", description: "Provider connections, wallet logic and catalog management unified in one layer." },
-  { icon: "api", title: "Single API", description: "One integration point for your platform team, regardless of how many providers you add." },
-  { icon: "server", title: "Operator Platform", description: "Your platform, branding and business logic — connected once, extended indefinitely." },
-  { icon: "users", title: "Players", description: "A consistent, reliable game experience for the people playing on your product." },
+  { icon: "grid", title: "Game studios", description: "Slots, live casino, crash, table games and other categories." },
+  { icon: "layers", title: "Aggregation layer", description: "Studio connections, wallet logic and catalog management in one place." },
+  { icon: "api", title: "One API", description: "A single integration point for your platform team." },
+  { icon: "server", title: "Operator platform", description: "Your platform, branding, accounts and wallet." },
+  { icon: "users", title: "Players", description: "Play in your lobby." },
 ];
 
+/** Concept diagram of an aggregation stack, labelled as an illustration. */
 export function AggregationDiagram() {
   return (
-    <div className="relative mx-auto max-w-lg">
-      {layers.map((layer, i) => (
-        <Reveal key={layer.title} delay={i * 90} className="relative">
-          <div className="card-surface card-glow flex items-center gap-4 rounded-2xl p-5">
-            <div
-              className={
-                i === 1
-                  ? "btn-primary flex size-12 shrink-0 items-center justify-center rounded-xl"
-                  : "flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary-bright"
-              }
-            >
-              <Icon name={layer.icon} className="size-6" />
+    <figure className="rounded-xl border border-border bg-surface p-5">
+      <p className="inline-flex rounded-md border border-border-strong px-2 py-0.5 text-sm font-medium text-muted">
+        Illustration
+      </p>
+      <ol className="mt-4">
+        {layers.map((layer, i) => (
+          <li key={layer.title}>
+            <div className="flex items-center gap-4 rounded-xl border border-border bg-elevated p-4">
+              <span
+                className={
+                  i === 1
+                    ? "flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary text-on-primary"
+                    : "flex size-11 shrink-0 items-center justify-center rounded-lg border border-border-strong text-foreground"
+                }
+              >
+                <Icon name={layer.icon} className="size-5" />
+              </span>
+              <span>
+                <span className="block text-base font-semibold text-foreground">{layer.title}</span>
+                <span className="block text-sm text-muted">{layer.description}</span>
+              </span>
             </div>
-            <div>
-              <h3 className="text-sm font-semibold text-foreground">{layer.title}</h3>
-              <p className="mt-0.5 text-xs leading-relaxed text-muted">{layer.description}</p>
-            </div>
-          </div>
-
-          {i < layers.length - 1 && (
-            <div className="flex justify-center py-2">
-              <div className="flow-line-vertical h-8 w-px overflow-hidden bg-border" />
-            </div>
-          )}
-        </Reveal>
-      ))}
-    </div>
+            {i < layers.length - 1 && <span aria-hidden="true" className="ml-9 block h-4 w-px bg-border-strong" />}
+          </li>
+        ))}
+      </ol>
+      <figcaption className="mt-4 text-sm text-muted">
+        Concept diagram: studios connect to the aggregation layer once, and your platform connects
+        to it through one API.
+      </figcaption>
+    </figure>
   );
 }

@@ -3,7 +3,8 @@ import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/Button";
+import { contactHref } from "@/lib/contact-context";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { PlatformVisual } from "@/components/sections/PlatformVisual";
 import { CTASection } from "@/components/sections/CTASection";
@@ -35,53 +36,55 @@ export default function PlatformPage() {
     <>
       <PageHeader
         eyebrow="Platform"
-        title="The technology layer underneath your operation"
-        description="Octhera sits beneath your brand, handling the operational and technical layers so your team can focus on growing the business."
+        title="The operator platform layer"
+        description="The back office and services underneath White Label and Turnkey deployments: player and wallet management, game controls, risk, bonuses and reporting."
       />
 
-      <section className="pb-24 lg:pb-32">
+      <section className="section-y" aria-labelledby="console-heading">
         <Container>
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <Reveal>
+          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div>
               <SectionHeading
-                eyebrow="Operator Dashboard"
-                title="Everything your team needs to run the business"
-                description="Player accounts, wallets, risk, bonuses and reporting — managed from a single operational surface, built for teams running live operations."
+                id="console-heading"
+                eyebrow="Operator console"
+                title="Where your team runs daily operations"
+                description="Player accounts, wallets, risk, bonuses and reporting are managed from one operational surface. Ask for a walkthrough to see the current product."
               />
-            </Reveal>
-            <Reveal delay={120}>
-              <PlatformVisual />
-            </Reveal>
+              <div className="mt-8">
+                <Button href={contactHref({ request: "walkthrough", product: "back-office" })}>
+                  Request a walkthrough
+                </Button>
+              </div>
+            </div>
+            <PlatformVisual />
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-border bg-surface py-24 lg:py-32">
+      <section className="theme-light section-y" aria-labelledby="capabilities-heading">
         <Container>
           <SectionHeading
-            eyebrow="Capabilities"
-            title="A complete operational toolkit"
-            align="center"
-            className="mx-auto"
+            id="capabilities-heading"
+            title="Capabilities"
+            description="Which capabilities are included, and how they are configured for your markets, is confirmed for your package during discovery."
           />
-
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((capability, i) => (
-              <Reveal key={capability.title} delay={i * 50} className="card-surface rounded-2xl p-6">
-                <div className="flex size-11 items-center justify-center rounded-xl bg-primary-soft text-primary-bright">
-                  <Icon name={capability.icon} className="size-5" />
-                </div>
-                <h3 className="mt-4 text-base font-semibold text-foreground">{capability.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{capability.description}</p>
-              </Reveal>
+          <ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {capabilities.map((capability) => (
+              <li key={capability.title} className="card-surface rounded-xl p-5 md:p-6">
+                <Icon name={capability.icon} className="size-5 text-primary-bright" />
+                <h3 className="mt-3 text-lg font-semibold text-foreground">{capability.title}</h3>
+                <p className="mt-2 text-base text-muted">{capability.description}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </Container>
       </section>
 
       <CTASection
-        title="See the platform in action"
-        description="Request a walkthrough of the Octhera platform with our team."
+        title="See the platform with our team"
+        description="Request a walkthrough of the Octhera platform. We'll contact you to arrange it."
+        primaryLabel="Request a walkthrough"
+        context={{ request: "walkthrough", product: "back-office" }}
       />
     </>
   );

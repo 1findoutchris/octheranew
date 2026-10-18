@@ -84,7 +84,7 @@ export default function GameAggregationPage() {
         description="A game aggregator connects to many game studios and exposes them to operators through one integration. This guide explains how that works, how it compares with integrating studios directly, and what to check when choosing an aggregator."
       />
 
-      <section className="pb-24 lg:pb-32">
+      <section className="section-y">
         <Container>
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <Reveal>
@@ -95,7 +95,7 @@ export default function GameAggregationPage() {
               />
               <p className="mt-6 text-base leading-relaxed text-muted">
                 At Octhera, that connection is the{" "}
-                <Link href="/products/casino-api" className="font-medium text-primary-bright hover:underline">
+                <Link href="/products/casino-api" className="link-inline">
                   Casino API
                 </Link>
                 : one endpoint to launch a game and one signed wallet callback your platform
@@ -107,7 +107,7 @@ export default function GameAggregationPage() {
         </Container>
       </section>
 
-      <section className="border-t border-border bg-surface py-24 lg:py-32">
+      <section className="theme-light section-y">
         <Container>
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             Aggregator versus direct studio integrations
@@ -117,7 +117,7 @@ export default function GameAggregationPage() {
             matters most when you want broad content without growing your integration workload with
             every studio you add.
           </p>
-          <div className="mt-10 overflow-x-auto rounded-2xl border border-border">
+          <div className="mt-10 overflow-x-auto rounded-xl border border-border" role="region" aria-label="Aggregator versus direct integrations" tabIndex={0}>
             <table className="w-full min-w-[640px] text-left text-sm">
               <thead className="bg-elevated text-foreground">
                 <tr>
@@ -140,37 +140,37 @@ export default function GameAggregationPage() {
         </Container>
       </section>
 
-      <section className="py-24 lg:py-32">
+      <section className="theme-light section-y border-t border-border">
         <Container>
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             What to check when choosing a game aggregator
           </h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {checklist.map((item, i) => (
-              <Reveal key={item.title} delay={i * 60} className="card-surface rounded-2xl p-6">
+            {checklist.map((item) => (
+              <Reveal key={item.title} className="card-surface rounded-xl p-5 md:p-6">
                 <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
+                <p className="mt-2 text-base text-muted">{item.description}</p>
               </Reveal>
             ))}
           </div>
           <p className="mt-10 max-w-3xl text-base leading-relaxed text-muted">
             To see how Octhera answers these questions, read the{" "}
-            <Link href="/products/casino-aggregator" className="font-medium text-primary-bright hover:underline">
+            <Link href="/products/casino-aggregator" className="link-inline">
               casino aggregator overview
             </Link>{" "}
             for what&apos;s included and how it&apos;s priced, the{" "}
-            <Link href="/products/casino-api" className="font-medium text-primary-bright hover:underline">
+            <Link href="/products/casino-api" className="link-inline">
               Casino API page
             </Link>{" "}
             and{" "}
-            <Link href="/docs" className="font-medium text-primary-bright hover:underline">
+            <Link href="/docs" className="link-inline">
               documentation
             </Link>{" "}
             for the integration, and the{" "}
-            <Link href="/providers" className="font-medium text-primary-bright hover:underline">
+            <Link href="/providers" className="link-inline">
               provider directory
             </Link>{" "}
-            for the studios we work with.
+            for the studios listed in our directory.
           </p>
         </Container>
       </section>
